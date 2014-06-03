@@ -1,0 +1,15 @@
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	/*margin-right: 100px;*/
+}
+
+#map-canvas {
+	height: 100%
+}
+
+#legenda {
+	width: 90px;
+	padding: 10px;
+}
