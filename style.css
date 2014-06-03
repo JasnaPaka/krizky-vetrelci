@@ -2,7 +2,10 @@ html, body {
 	height: 100%;
 	margin: 0;
 	padding: 0;
-	/*margin-right: 100px;*/
+	background-color: white;
+	color: black;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 13px;
 }
 
 #map-canvas {
@@ -10,6 +13,6 @@ html, body {
 }
 
 #legenda {
-	width: 90px;
+	float:right;
 	padding: 10px;
 }

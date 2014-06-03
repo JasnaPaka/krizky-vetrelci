@@ -3,13 +3,16 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<meta name="description" content="Křížky a vetřelci, přehled drobných památek na území města Plzně." />
+  	<meta name="keywords" content="plzeň,sakrální památky, normalizace, sorela, sochy, kříže, kapličky" />
+  	<meta name="author" content="Pavel Cvrček | jasnapaka@jasnapaka.com" />
 	
 	<title>Křížky a vetřelci</title>
 	
 	<link type="text/css" rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" title="Základní styl" />
 	
 	<script type="text/javascript" 
-    	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAC9G-I3g4tWPbXK-v_Ws_1_dY4V8w6Eew&sensor=false">
+    	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAC9G-I3g4tWPbXK-v_Ws_1_dY4V8w6Eew&amp;sensor=false">
     </script>
     
     <script type="text/javascript">
@@ -48,6 +51,7 @@
 			var marker = new google.maps.Marker({
 			    position: new google.maps.LatLng(bodyVMape[i][1], bodyVMape[i][2]),
 			    map: map,
+			    icon: bodyVMape[i][4],
 			    title: bodyVMape[i][0]
 			});
 			marker.category = bodyVMape[i][3];
@@ -68,9 +72,11 @@
     </script>
 </head>
 <body>
-	<div id="legenda" style="float: right">
-		<strong>Legenda</strong>
+	<div id="legenda">
+		<div style="margin-bottom: 8px;"><strong>Legenda</strong></div>
 		<?php echo kv_MapaLegenda() ?>
+		
+		<p><strong>Počet objektů</strong>: <?php echo kv_ObjektPocet() ?> </p>
 	</div>
 	<div id="map-canvas"></div>
 </body>
