@@ -72,11 +72,17 @@
     </script>
 </head>
 <body>
+	<h1>Křížky a vetřelci</h1>
+	<p id="podnadpis">Přehled drobných památek a zajímavostí na území města Plzeň.</p>
+
 	<div id="legenda">
 		<div style="margin-bottom: 8px;"><strong>Legenda</strong></div>
 		<?php echo kv_MapaLegenda() ?>
 		
 		<p><strong>Počet objektů</strong>: <?php echo kv_ObjektPocet() ?> </p>
+		
+		<p id="facebook"><a href="https://www.facebook.com/groups/krizkyavetrelci/" title="Sledujte nás na Facebooku">
+			<img src="<?php bloginfo('template_directory'); ?>/images/facebook-50.png" alt="" /></a></p>
 	</div>
 	<div id="map-canvas"></div>
 </body>

@@ -8,6 +8,16 @@ html, body {
 	font-size: 13px;
 }
 
+h1 {
+	margin: 5px 0 0 10px;
+	padding: 0;
+}
+
+#podnadpis {
+	margin: 0 0 5px 10px;
+	padding: 0;
+}
+
 #map-canvas {
 	height: 100%
 }
