@@ -52,7 +52,7 @@
 			    position: new google.maps.LatLng(bodyVMape[i][1], bodyVMape[i][2]),
 			    map: map,
 			    icon: bodyVMape[i][4],
-			    title: bodyVMape[i][0]
+			    title: bodyVMape[i][5]
 			});
 			marker.category = bodyVMape[i][3];
 			
@@ -72,18 +72,34 @@
     </script>
 </head>
 <body>
-	<h1>Křížky a vetřelci</h1>
-	<p id="podnadpis">Přehled drobných památek a zajímavostí na území města Plzeň.</p>
-
 	<div id="legenda">
+		<img src="<?php bloginfo('template_directory'); ?>/images/logo.png" id="logo" alt="" />
+		
+		<p style="color: red">Pracovní verze</p>
+		
+		<p><strong>Křížky a vetřelci</strong> mapují drobné památky na území města Plzně.</p>
+		
+		<p>Chybí v mapě objekt? Chcete se zapojit? <a href="mailto:krizkyavetrelci@email.cz">Napište nám</a>!</p>
+	
 		<div style="margin-bottom: 8px;"><strong>Legenda</strong></div>
 		<?php echo kv_MapaLegenda() ?>
 		
 		<p><strong>Počet objektů</strong>: <?php echo kv_ObjektPocet() ?> </p>
 		
 		<p id="facebook"><a href="https://www.facebook.com/groups/krizkyavetrelci/" title="Sledujte nás na Facebooku">
-			<img src="<?php bloginfo('template_directory'); ?>/images/facebook-50.png" alt="" /></a></p>
+			<img src="<?php bloginfo('template_directory'); ?>/images/facebook-32.png" alt="" /></a></p>
 	</div>
 	<div id="map-canvas"></div>
+	
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-51854113-1', 'jasnapaka.com');
+	  ga('send', 'pageview');
+	
+	</script>
 </body>
 </html>

@@ -8,14 +8,8 @@ html, body {
 	font-size: 13px;
 }
 
-h1 {
-	margin: 5px 0 0 10px;
-	padding: 0;
-}
-
-#podnadpis {
-	margin: 0 0 5px 10px;
-	padding: 0;
+a {
+	color: #006699;
 }
 
 #map-canvas {
@@ -24,6 +18,11 @@ h1 {
 
 #legenda {
 	padding: 10px;
+	width: 155px;
+}
+
+#logo {
+	margin-bottom: 10px;
 }
 
 @media (min-width: 640px) {
