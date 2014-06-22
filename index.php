@@ -88,6 +88,19 @@
 		
 		<p id="facebook"><a href="https://www.facebook.com/groups/krizkyavetrelci/" title="Sledujte nás na Facebooku">
 			<img src="<?php bloginfo('template_directory'); ?>/images/facebook-32.png" alt="" /></a></p>
+			
+		<h3>Podpora</h3>
+		
+		<p>Projekt Křížky a vetřelci je jedním z vítězných projektů programu 
+			<a href="http://www.verejnyprostorvplzni.cz/pestuj-prostor">Pěstuj prostor</a> v rámci 
+			<a href="http://www.plzen2015.cz/">Plzeň 2015</a> &ndash; Evropské hlavní město kultury.
+		</p>
+		
+		<p><a href="http://www.plzen2015.cz/" title="Plzeň 2015 - Evropské hlavní město kultury">
+			<img src="<?php bloginfo('template_directory'); ?>/images/p-plzen2015.png" alt="" /></a>
+		</p>
+			
+		
 	</div>
 	<div id="map-canvas"></div>
 	

@@ -1,4 +1,4 @@
-html, body {
+html, body, h1, h2, h3 {
 	height: 100%;
 	margin: 0;
 	padding: 0;
@@ -12,6 +12,11 @@ a {
 	color: #006699;
 }
 
+h3 {
+	font-size: 15px;
+	margin: 0
+}
+
 #map-canvas {
 	height: 100%
 }
@@ -23,6 +28,10 @@ a {
 
 #logo {
 	margin-bottom: 10px;
+}
+
+#propagace {
+	text-align: center;
 }
 
 @media (min-width: 640px) {
