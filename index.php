@@ -17,6 +17,7 @@
     
     <script type="text/javascript">
 		var map;
+		var infowindow;
         
         var mapOptions = {
           center: new google.maps.LatLng(49.748398, 13.377652),
@@ -61,7 +62,11 @@
 			
 			google.maps.event.addListener(marker, 'click', (function(marker, i) {
 	            return function() {
-		            var infowindow = new google.maps.InfoWindow({
+	            	if (infowindow) {
+	            		infowindow.close();
+	            	}
+	            
+		            infowindow = new google.maps.InfoWindow({
 		      			content: bodyVMape[i][0]
 		  			});
 	              	infowindow.open(map, marker);
