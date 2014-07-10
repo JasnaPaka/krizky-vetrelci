@@ -45,6 +45,9 @@
 
       function initialize() {
       	map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+      	
+      	var styles = [ { featureType: "poi", stylers: [ { visibility: "off" } ] } ];
+      	map.setOptions({styles: styles});
       
         for (i = 0; i < bodyVMape.length; i++) {
 
