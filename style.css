@@ -1,10 +1,13 @@
 html, body, h1, h2, h3 {
-	height: 100%;
 	margin: 0;
 	padding: 0;
 	background-color: white;
 	color: black;
 	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+html, body {
+	height: 100%;
 	font-size: 13px;
 }
 
@@ -17,8 +20,16 @@ h3 {
 	margin: 0
 }
 
+input[type=text]{
+	width: 300px;
+}
+
 #map-canvas {
 	height: 100%
+}
+
+td #map-canvas {
+	height: 300px;
 }
 
 #legenda {
@@ -32,6 +43,15 @@ h3 {
 
 #propagace {
 	text-align: center;
+}
+
+#content {
+	max-width: 800px;
+	margin: 0 auto 0 auto;
+}
+
+.error {
+	color: red;
 }
 
 @media (min-width: 640px) {
