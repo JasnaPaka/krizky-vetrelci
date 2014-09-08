@@ -20,8 +20,14 @@ h3 {
 	margin: 0
 }
 
+hr {
+	height: 1px;
+	background-color: silver;
+}
+
 input[type=text]{
 	width: 300px;
+	
 }
 
 #map-canvas {
@@ -34,11 +40,11 @@ td #map-canvas {
 
 #legenda {
 	padding: 10px;
-	width: 155px;
+	width: 200px;
 }
 
 #logo {
-	margin-bottom: 10px;
+	margin: 0 0 10px 25px;
 }
 
 #propagace {
@@ -57,6 +63,13 @@ td #map-canvas {
 @media (min-width: 640px) {
 	#legenda {
 		float:right;
+	}
+	
+	#legenda-content {
+		position: absolute;
+		overflow-y: auto;
+		top: 150px;
+		bottom: 0px;
 	}
 }
 
