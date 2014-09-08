@@ -64,6 +64,11 @@
             }
         })(marker, i));
         
+        // Pokud nemá být objekt vidět, skryjeme jej.
+        if (bodyVMape[i][6] == 0) {
+        	marker.setMap(null);
+        }
+        
         markers.push(marker);
   	}
   }
