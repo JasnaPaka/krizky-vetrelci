@@ -34,6 +34,17 @@
 			}
 		}
 	}
+	
+	function getURLParameter(name) {
+	  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+	  var regexS = "[\\?&]"+name+"=([^&#]*)";
+	  var regex = new RegExp( regexS );
+	  var results = regex.exec( window.location.href );
+	  if( results == null )
+	    return null;
+	  else
+	    return results[1];
+	}
 
   function initialize() {
   	map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
@@ -67,6 +78,14 @@
         // Pokud nemá být objekt vidět, skryjeme jej.
         if (bodyVMape[i][6] == 0) {
         	marker.setMap(null);
+        }
+        
+        // Pokud má být objekt zobrazen i s infem (trvalý odkaz), zobrazíme
+        visibleObject = getURLParameter("objekt");
+        if (visibleObject != null && visibleObject == bodyVMape[i][7]) {
+        	google.maps.event.trigger(marker, 'click');
+        	map.setZoom(16);
+			map.panTo(marker.position);
         }
         
         markers.push(marker);
