@@ -23,10 +23,11 @@
 
 	function kv_zmenaViditelnostiSkupiny(id) {
 		var checked = document.getElementById("kv_category" + id).checked;
+		var zoom = map.getZoom();
 		
 		for (i=0; i<markers.length; i++) {
 			if (markers[i].category == id) {
-				if (checked) {
+				if (checked && markers[i].minZoom <= zoom) {
 					markers[i].setMap(map);
 				} else {
 					markers[i].setMap(null);
@@ -45,52 +46,72 @@
 	  else
 	    return results[1];
 	}
-
-  function initialize() {
-  	map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-  	
-  	var styles = [ { featureType: "poi", stylers: [ { visibility: "off" } ] } ];
-  	map.setOptions({styles: styles});
-  
-    for (i = 0; i < bodyVMape.length; i++) {
-
-		var marker = new google.maps.Marker({
-		    position: new google.maps.LatLng(bodyVMape[i][1], bodyVMape[i][2]),
-		    map: map,
-		    icon: bodyVMape[i][4],
-		    title: bodyVMape[i][5]
-		});
-		marker.category = bodyVMape[i][3];
+	
+	function changeZoom() {
+		var zoom = map.getZoom();
 		
-		google.maps.event.addListener(marker, 'click', (function(marker, i) {
-            return function() {
-            	if (infowindow) {
-            		infowindow.close();
-            	}
-            
-	            infowindow = new google.maps.InfoWindow({
-	      			content: bodyVMape[i][0]
-	  			});
-              	infowindow.open(map, marker);
-            }
-        })(marker, i));
-        
-        // Pokud nemá být objekt vidět, skryjeme jej.
-        if (bodyVMape[i][6] == 0) {
-        	marker.setMap(null);
-        }
-        
-        // Pokud má být objekt zobrazen i s infem (trvalý odkaz), zobrazíme
-        visibleObject = getURLParameter("objekt");
-        if (visibleObject != null && visibleObject == bodyVMape[i][7]) {
-        	google.maps.event.trigger(marker, 'click');
-        	map.setZoom(16);
-			map.panTo(marker.position);
-        }
-        
-        markers.push(marker);
+  		for (i=0; i<markers.length; i++) {
+  			var checked = document.getElementById("kv_category" + markers[i].category).checked;
+			if (checked && markers[i].minZoom <= zoom) {
+				markers[i].setMap(map);
+			} else {
+				markers[i].setMap(null);
+			}
+		}
   	}
+
+	function initialize() {
+		map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+		var styles = [ { featureType: "poi", stylers: [ { visibility: "off" } ] } ];
+		map.setOptions({styles: styles});
+  
+  		for (i = 0; i < bodyVMape.length; i++) {
+
+			var marker = new google.maps.Marker({
+			    position: new google.maps.LatLng(bodyVMape[i][1], bodyVMape[i][2]),
+			    map: map,
+			    icon: bodyVMape[i][4],
+			    title: bodyVMape[i][5]
+			});
+			marker.category = bodyVMape[i][3];
+			marker.minZoom = bodyVMape[i][8];
+			
+			google.maps.event.addListener(marker, 'click', (function(marker, i) {
+	            return function() {
+	            	if (infowindow) {
+	            		infowindow.close();
+	            	}
+	            
+		            infowindow = new google.maps.InfoWindow({
+		      			content: bodyVMape[i][0]
+		  			});
+	              	infowindow.open(map, marker);
+	            }
+	        })(marker, i));
+	        
+	        // Pokud nemá být objekt vidět, skryjeme jej.
+	        if (bodyVMape[i][6] == 0) {
+	        	marker.setMap(null);
+	        }
+	        
+	        // Pokud má být objekt zobrazen i s infem (trvalý odkaz), zobrazíme
+	        visibleObject = getURLParameter("objekt");
+	        if (visibleObject != null && visibleObject == bodyVMape[i][7]) {
+	        	google.maps.event.trigger(marker, 'click');
+	        	map.setZoom(16);
+				map.panTo(marker.position);
+	        }
+	        
+	        markers.push(marker);
+	  	}
+  	
+	  	google.maps.event.addDomListener(map,'zoom_changed', function() { 
+		  	changeZoom();
+		});
+		changeZoom();
   }
+  
   google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 
