@@ -57,6 +57,12 @@
 			} else {
 				markers[i].setMap(null);
 			}
+			
+			// U trvalého odkazu zobrazíme objekt i tehdy, je-li kategorie skryta.
+			visibleObject = getURLParameter("objekt");
+	        if (visibleObject != null && visibleObject == bodyVMape[i][7]) {
+	        	markers[i].setMap(map);
+	        }
 		}
   	}
 
