@@ -1,169 +1,87 @@
 <?php get_header(); ?>
 
-<?php if (is_home()) { ?>
+  <div id="page" class="index bleft">
 
-<script type="text/javascript" 
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAC9G-I3g4tWPbXK-v_Ws_1_dY4V8w6Eew&amp;sensor=false">
-</script>
+   	<div class="inner contentheight">         
 
-<script type="text/javascript">
-	var map;
-	var infowindow;
+
+    <div class="postsIndex">
+	    <div class="padding">
+		<h2>O projektu</h2>     
+
+   	
     
-    var mapOptions = {
-      center: new google.maps.LatLng(49.748398, 13.377652),
-      zoom: 13
-    };
-	
-    var bodyVMape = [
-    	<?php echo kv_MapaData() ?>
-    ];
+		<p id="o-projektu">
+			<img src="<?php bloginfo('template_url'); ?>-child-krizkyavetrelci/images/medvedi-nahled.jpg" alt="Medvědi" id="o-projektu-logo" /> 
+			Projekt Křížky a vetřelci mapuje drobné umění na území města Plzeň. Zaměřuje se jak na umění z doby normalizace,
+			tak na sakrální památky jako jsou křížky či kapličky. Bez povšimnutí však nezůstávají ani pomníky a pamětní desky.
+			Křížky a vetřelci jsou otevřeným projektem, do kterého se může zapojit každý. Víte o díle, které nám chybí v
+			katalogu? Nebo o něm něco víte? <a href="mailto:krizkyavetrelci@seznam.cz">Napište nám</a> nebo se 
+			<a href="https://www.facebook.com/groups/krizkyavetrelci/">zapojte na Facebooku</a>.
+		</p>
+		
+		<div id="o-projektu-button">
+			<a href="/o-projektu/" class="button">Více o projektu</a>
+		</div>  
+		
+		<h2>Mapa</h2>
+		
+		<p id="titulka-mapa">
+		Aktuálně je zmapováno umístění <strong><?php echo kv_ObjektPocet() ?> děl</strong>.
+		</p>
+		
+		<p id="titulka-mapa-img"><a href="/mapa/" title="Přejít na mapu">
+			<img src="<?php bloginfo('template_url'); ?>-child-krizkyavetrelci/images/kv-mapa.jpg" alt="Mapa" /> 
+		</a></p>
+		
+		<div id="titulka-mapa-button">
+			<a href="/mapa/" class="button">Přejít na mapu</a>
+		</div>
     
-    var markers = [];
+    </div>
+	</div>
+	
+      <div id="actualprojects" class="contentheight">
 
-	function kv_zmenaViditelnostiSkupiny(id) {
-		var checked = document.getElementById("kv_category" + id).checked;
-		var zoom = map.getZoom();
-		
-		for (i=0; i<markers.length; i++) {
-			if (markers[i].category == id) {
-				if (checked && markers[i].minZoom <= zoom) {
-					markers[i].setMap(map);
-				} else {
-					markers[i].setMap(null);
-				}
-			}
-		}
-	}
-	
-	function getURLParameter(name) {
-	  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
-	  var regexS = "[\\?&]"+name+"=([^&#]*)";
-	  var regex = new RegExp( regexS );
-	  var results = regex.exec( window.location.href );
-	  if( results == null )
-	    return null;
-	  else
-	    return results[1];
-	}
-	
-	function changeZoom() {
-		var zoom = map.getZoom();
-		
-  		for (i=0; i<markers.length; i++) {
-  			var checked = document.getElementById("kv_category" + markers[i].category).checked;
-			if (checked && markers[i].minZoom <= zoom) {
-				markers[i].setMap(map);
+        <h2>Náhodné dílo</h2>
+
+		<?php 
+			$uploadDir = wp_upload_dir();
+			$obj = kv_random_object();
+			
+			echo '<a href="/katalog/dilo/'.$obj->id.'/"><h3>'.$obj->nazev.'</h3></a>';
+			
+			if ($obj->img_512 != null) {
+				echo '<a href="/katalog/dilo/'.$obj->id.'/">
+					<img src="'.$uploadDir['baseurl'].$obj->img_512.'" alt="Ukázka díla" id="titulka-random-img" /></a>';				
 			} else {
-				markers[i].setMap(null);
+				echo '<a href="/katalog/dilo/'.$obj->id.'/">
+					<img src="'.get_template_directory_uri().'-child-krizkyavetrelci/images/foto-neni-512.png" alt="Ukázka díla" id="titulka-random-img" /></a>';	
 			}
+		?>
+		
+		<br /><br /><br /><br />
+		<h2>Poslední přidané</h2>
+		
+		<?php
+			$uploadDir = wp_upload_dir();
+			$obj = kv_last_object();
 			
-			// U trvalého odkazu zobrazíme objekt i tehdy, je-li kategorie skryta.
-			visibleObject = getURLParameter("objekt");
-	        if (visibleObject != null && visibleObject == bodyVMape[i][7]) {
-	        	markers[i].setMap(map);
-	        }
-		}
-  	}
-
-	function initialize() {
-		map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-
-		var styles = [ { featureType: "poi", stylers: [ { visibility: "off" } ] } ];
-		map.setOptions({styles: styles});
-  
-  		for (i = 0; i < bodyVMape.length; i++) {
-
-			var marker = new google.maps.Marker({
-			    position: new google.maps.LatLng(bodyVMape[i][1], bodyVMape[i][2]),
-			    map: map,
-			    icon: bodyVMape[i][4],
-			    title: bodyVMape[i][5]
-			});
-			marker.category = bodyVMape[i][3];
-			marker.minZoom = bodyVMape[i][8];
+			echo '<a href="/katalog/dilo/'.$obj->id.'/"><h3>'.$obj->nazev.'</h3></a>';
 			
-			google.maps.event.addListener(marker, 'click', (function(marker, i) {
-	            return function() {
-	            	if (infowindow) {
-	            		infowindow.close();
-	            	}
-	            
-		            infowindow = new google.maps.InfoWindow({
-		      			content: bodyVMape[i][0]
-		  			});
-	              	infowindow.open(map, marker);
-	            }
-	        })(marker, i));
-	        
-	        // Pokud nemá být objekt vidět, skryjeme jej.
-	        if (bodyVMape[i][6] == 0) {
-	        	marker.setMap(null);
-	        }
-	        
-	        // Pokud má být objekt zobrazen i s infem (trvalý odkaz), zobrazíme
-	        visibleObject = getURLParameter("objekt");
-	        if (visibleObject != null && visibleObject == bodyVMape[i][7]) {
-	        	google.maps.event.trigger(marker, 'click');
-	        	map.setZoom(16);
-				map.panTo(marker.position);
-	        }
-	        
-	        markers.push(marker);
-	  	}
-  	
-	  	google.maps.event.addDomListener(map,'zoom_changed', function() { 
-		  	changeZoom();
-		});
-		changeZoom();
-  }
-  
-  google.maps.event.addDomListener(window, 'load', initialize);
-</script>
+			if ($obj->img_512 != null) {
+				echo '<a href="/katalog/dilo/'.$obj->id.'/">
+					<img src="'.$uploadDir['baseurl'].$obj->img_512.'" alt="Ukázka díla" id="titulka-random-img" /></a>';				
+			} else {
+				echo '<a href="/katalog/dilo/'.$obj->id.'/">
+					<img src="'.get_template_directory_uri().'-child-krizkyavetrelci/images/foto-neni-512.png" alt="Ukázka díla" id="titulka-random-img" /></a>';	
+			}			
+		?>
 
-<div id="legenda">
-	<img src="<?php bloginfo('template_directory'); ?>/images/logo.png" id="logo" alt="" />
-	
-	<div id="legenda-content">
-		<p><strong>Křížky a vetřelci</strong> mapují drobné památky na území města Plzně.</p>
-		
-		<p>Chybí v mapě objekt? Chcete se zapojit? <a href="mailto:krizkyavetrelci@email.cz">Napište nám</a>!</p>
-	
-		<div style="margin-bottom: 8px;"><strong>Legenda</strong></div>
-		<?php echo kv_MapaLegenda() ?>
-		
-		<p><strong>Počet objektů</strong>: <?php echo kv_ObjektPocet() ?> </p>
-		
-		<p id="facebook"><a href="https://www.facebook.com/groups/krizkyavetrelci/" title="Sledujte nás na Facebooku">
-			<img src="<?php bloginfo('template_directory'); ?>/images/facebook-32.png" alt="" /></a></p>
-			
-		<h3>Podpora</h3>
-		
-		<p>Projekt Křížky a vetřelci je jedním z vítězných projektů programu 
-			<a href="http://www.verejnyprostorvplzni.cz/pestuj-prostor">Pěstuj prostor</a> v rámci 
-			<a href="http://www.plzen2015.cz/">Plzeň 2015</a> &ndash; Evropské hlavní město kultury.
-		</p>
-		
-		<p><a href="http://www.plzen2015.cz/" title="Plzeň 2015 - Evropské hlavní město kultury">
-			<img src="<?php bloginfo('template_directory'); ?>/images/p-plzen2015.png" alt="" /></a>
-		</p>
-	</div>	
-</div>
-<div id="map-canvas"></div>
-	
-<?php } else { ?>	
+      </div>      
+    </div>
 
-<div id="content">
+  </div> 
 
-<?php		
-	while ( have_posts() ) : the_post();
-		the_title('<h1>', '</h1>');	
-		the_content();
-	endwhile;
-?>
 
-</div>	
-	
-<?php } ?>
-	
 <?php get_footer(); ?>

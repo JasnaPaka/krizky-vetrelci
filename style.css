@@ -1,75 +1,411 @@
-html, body, h1, h2, h3 {
-	margin: 0;
-	padding: 0;
-	background-color: white;
-	color: black;
-	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-}
-
-html, body {
-	height: 100%;
-	font-size: 13px;
-}
-
-a {
-	color: #006699;
-}
-
-h3 {
-	font-size: 15px;
-	margin: 0
-}
-
-hr {
-	height: 1px;
-	background-color: silver;
-}
-
-input[type=text]{
-	width: 300px;
-	
-}
+/*
+Theme Name: Projekt Krizkyavetrelci.plzne.cz
+Author: Pavel Cvrček
+Description: Šablona projektu Křížky a vetřelci
+Template: vpp
+Version: 1.0
+*/
 
 #map-canvas {
-	height: 100%
+	width: 100%;
+	height: 100%;
 }
 
-td #map-canvas {
-	height: 300px;
+
+#dilaPocet {
+	font-size: 12px;
 }
 
-#legenda {
-	padding: 10px;
-	width: 200px;
+.scrollFix {
+    line-height: 1.35;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
-#logo {
-	margin: 0 0 10px 25px;
+.scrollFix > p:nth-child(1) {
+	font-size: 14px;
+	margin-bottom: 5px;
 }
 
-#propagace {
-	text-align: center;
+.scrollFix > div:nth-child(2) > p:nth-child(3) {
+	margin-top: 5px;
 }
 
-#content {
-	max-width: 800px;
-	margin: 0 auto 0 auto;
+.category-circle-out {
+	width: 13px;
+	height: 13px;
+	float: left;
+	margin-right: 10px;
+	border-radius: 50%;
 }
 
-.error {
-	color: red;
+.category-circle-in {
+	width: 11px;
+	height: 11px;
+	float: left;
+	margin: 1px 1px 1px 1px;
+	border-radius: 50%;
 }
 
-@media (min-width: 640px) {
-	#legenda {
-		float:right;
-	}
+.content h3 {
+	font-size: 18px;
+}
+
+.content a {
+	color: #85a92b;
+}
+
+.content a:hover {
+	text-decoration: underline;
+}
+
+#mappage #filters .panel {
+	padding: 15px;
+}
+
+#mappage a {
+	color: #85a92b;
+}
+
+#map-canvas
+
+#map-canvas {
+	height:300px
+}
+
+/* detail díla */
+
+#page.index.podnet .topMenu a {
+	text-decoration: underline;
+}
+
+#page.index.podnet .topMenu > div:nth-child(1) {
+	width: 250px;
+	border-right: 1px solid silver;
+	margin: 0 15px 0 15px;
+}
+
+#page.index.podnet .topMenu > div:nth-child(2) {
+	width: 250px;
+	border-right: 1px solid silver;
+	margin: 0 15px 0 0;
+}
+
+#page.index.podnet .topMenu > div:nth-child(3) {
+	width: 250px;
+	border-right: 1px solid silver;
+	margin: 0 15px 0 0;
+}
+
+#page.index.podnet .topMenu > div:nth-child(4) {
 	
-	#legenda-content {
-		position: absolute;
-		overflow-y: auto;
-		top: 150px;
-		bottom: 0px;
-	}
 }
 
+#page.index.podnet .topMenu h1 {
+	color: #85a92b;
+	font-weight: bolder;
+}
+
+#page.index.podnet .topMenu .space {
+	margin-top: 15px;
+}
+
+.buttonGreen {
+	background-color: #85a92b;	
+}
+
+.topMenu {
+	margin-left: 6px;
+}
+
+#picture-box {
+	margin: 15px 0 15px 0;
+	float: left;
+	width: 510px;
+}
+
+#map-box {
+	width: 470px;
+	height: 384px;
+	float: right;
+	margin: 15px 0 15px 0;
+}
+
+#map-box #map-canvas {
+	height: 384px;
+}
+
+.clear {
+	clear: both;
+}
+
+#photo-small {
+	text-align: center;
+	padding-top: 8px;
+}
+
+.photo-preview {
+	opacity: 0.5;
+}
+
+.photo-preview:hover {
+	opacity: 1.0;
+}
+
+#photo-description {
+	text-align: center;
+	margin: 8px 0 8px 0;
+}
+
+#obsah-perex {
+	color: #85a92b;
+	font-size: 18px;
+	line-height: 1.2;
+}
+
+#obsah p, #zdroje p, .pridat-dilo p {
+	margin: 8px 0 8px 0;
+	font-size: 15px;
+	line-height: 1.3;
+}
+
+#obsah-container {
+	margin: 15px 0 15px 0;
+	
+	-webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+    
+   	-webkit-column-gap: 40px;
+    -moz-column-gap: 40px;
+    column-gap: 40px;
+}
+
+#zdroje {
+	margin: 0 0 20px 0;
+}
+
+#zdroje h3 {
+	font-size: 20px;
+	color: #85a92b;
+	margin: 8px 0 12px 0;
+}
+
+
+#zdroje hr {
+	border-width: 1px 0px 0px;
+	border-style: solid none none;
+	margin: 20px 0 20px 0;
+}
+
+#zdroje a {
+	color: #000;
+	text-decoration: underline;
+}
+
+#objekt-zrusen {
+	background-color: orange;
+	padding: 10px;
+	width: 100%;
+	margin-top: 10px;
+}
+
+/* titulka */
+#o-projektu {
+/*	margin: 0 330px 0 0;  */
+	line-height: 1.3;
+	font-size: 1em;
+	color: #4D4D4D;
+}
+
+#o-projektu-button {
+	margin: 40px 0 20px 0;
+}
+
+#titulka-mapa {
+/*	margin: 0 330px 0 0;   */
+}
+
+#titulka-mapa-img {
+	margin: 15px 0 0 0;
+}
+
+#titulka-mapa-button {
+	margin: 40px 0 20px 0;
+}
+
+.contentheight p a {
+	color: #85a92b;
+}
+
+.contentheight p a:hover {
+	text-decoration: underline;
+}
+
+#o-projektu-logo {
+	float: right;
+	margin: 0 10px 0 10px;
+	opacity: 0.8;
+}
+
+#titulka-random-img {
+	max-width: 300px;
+}
+
+
+#actualprojects h3 {
+	font-size: 18px;
+	margin: 10px 0 10px 0;
+}
+
+#actualprojects a h3 {
+	color: #85a92b;
+}
+
+.contentheight a:hover h3 {
+	text-decoration: underline;
+}
+
+/* Katalog děl */
+.katalog-dilo-obr {
+	max-width: 340px;
+	max-height: 255px;
+}
+
+#page.katalog .post, #page.news .post {
+    position: relative;
+    float: left;
+    width: 340px;
+    margin: 0px;
+}
+
+#page.katalog .post .padding {
+	margin: 0px 0px 15px 0px;
+	height: 110px;
+}
+
+#page.katalog .post .padding h3 {
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+
+#page.katalog .post .padding a {
+	color: #595959;
+	text-decoration: none;
+}
+
+#page.katalog .post .padding a:hover {
+	text-decoration: underline;
+}
+
+#page.katalog .post .padding p {
+	margin: 0;
+}
+
+#page.katalog .post .padding .post-label {
+	font-size: 14px;
+	color: #595959;
+	padding-right: 0px;
+}
+
+#page.katalog hr {
+    border-width: 1px 0px 0px;
+    border-style: solid none none;
+    border-color: #CCC -moz-use-text-color -moz-use-text-color;
+    -moz-border-top-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    border-image: none;
+    margin-bottom: 15px;
+}
+
+.katalog-strankovani {
+	text-align: center;
+	margin: 10px 0 20px 0;
+	font-size: 17px;
+}
+
+.strankovani-polozka, .strankovani-polozka-akt {
+	padding: 0px 5px 0 5px;	
+	margin: 0 5px 0 5px;
+}
+
+.strankovani-polozka-akt {
+	color: white;
+	background-color: #85a92b;
+}
+
+a.strankovani-polozka {
+	color: #333333;
+}
+
+a.strankovani-predchozi, a.strankovani-dalsi, a.strankovani-prvni, a.strankovani-posledni {
+	color: #333333;
+	text-decoration: underline;
+}
+
+a.strankovani-prvni {
+	float: left;
+}
+
+a.strankovani-posledni {
+	float: right;
+}
+
+a.strankovani-predchozi {
+	margin-right: 10px; 
+}
+
+a.strankovani-dalsi {
+	margin-left: 10px;
+}
+
+a:hover.strankovani-polozka {
+	text-decoration: underline;
+}
+
+/* Přidat dílo */
+.pridat-dilo p a {
+	color: #85a92b;
+}
+
+#pridat-button-div {
+	margin: 15px 0 25px 0;
+}
+
+#page form.rows h3 {
+	color: #85a92b;
+}
+
+.pridat-dilo .button.orange {
+	background-color: #85a92b;
+}
+
+.pridat-dilo .updated {
+	background-color: #85a92b;
+	padding: 4px 8px 4px 10px;
+	color: white;
+}
+
+.pridat-dilo .error {
+	padding: 4px 8px 4px 10px;
+} 
+
+/* Detail autora */
+#page.katalog div.postitemauthor .padding {
+	height: 60px;
+}
+
+#page.katalog .post .paddingaut {
+	height: 60px;
+}
+
+#page.katalog p {
+	margin: 15px 0 15px 0;
+}
+
+#page.author h3 {
+	font-size: 20px;
+	margin: 30px 0 10px 0;
+}
