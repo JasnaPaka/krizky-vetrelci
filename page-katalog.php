@@ -2,13 +2,28 @@
 	get_header();
 	$uploadDir = wp_upload_dir();
 	$objekty = kv_object_seznam();
+	$oc = kv_object_controller();
 ?>
 
 <div id="page" class="katalog index">
 <div class="inner">
 <div class="padding">
 
-<h2>Katalog děl</h2>
+<div id="searchdatabase">
+	<form method="post" action="/katalog/">
+        <input name="typ" value="dilo" type="hidden">
+        <input id="s" name="s" placeholder="Hledat v dílech..." type="text">
+        <input value="Hledat" type="submit">
+	</form>
+</div>
+
+<h2>
+	<?php if ($oc->getSearchValue() == null) { ?>
+		Katalog děl
+	<?php } else { ?>
+		Výsledek hledání v dílech pro "<?php echo $oc->getSearchValue()?>"
+	<?php }?>
+</h2>
 
 </div>
 </div>
@@ -89,49 +104,48 @@
 		$page = (int) $_GET["stranka"];
 		$countPages = kv_object_pages_count();
 		
-		// První
-		if ($page > 0) {
-			echo '<a href="/katalog/" class="strankovani-prvni">První</a>';		
-		}		
-	
-		// Předchozí
-		if ($page-1 >= 0) {
-			echo '<a href="/katalog/?stranka='.($page-1).'" class="strankovani-predchozi">Předchozí</a>';		
-		}
-	
-		// před aktuální stránkou
-		if ($page-2 >= 0) {
-			echo '<a href="/katalog/?stranka='.($page-2).'" class="strankovani-polozka">'.($page-1)."</a>";		
-		}
-		if ($page-1 >= 0) {
-			echo '<a href="/katalog/?stranka='.($page-1).'" class="strankovani-polozka">'.($page)."</a>";		
-		}
+		if ($countPages > 0) {
+			// První
+			if ($page > 0) {
+				echo '<a href="/katalog/" class="strankovani-prvni">První</a>';		
+			}		
 		
-		// aktuální
-		echo '<span class="strankovani-polozka-akt">'.($page+1).'</span>';
+			// Předchozí
+			if ($page-1 >= 0) {
+				echo '<a href="/katalog/?stranka='.($page-1).'" class="strankovani-predchozi">Předchozí</a>';		
+			}
 		
-		// po aktuálním
-		if ($page <= $countPages) {
-			echo '<a href="/katalog/?stranka='.($page+1).'" class="strankovani-polozka">'.($page+2)."</a>";		
-		}
-		if ($page+1 <= $countPages) {
-			echo '<a href="/katalog/?stranka='.($page+2).'" class="strankovani-polozka">'.($page+3)."</a>";		
-		}
-		
-		// další
-		if ($page <= $countPages) {
-			echo '<a href="/katalog/?stranka='.($page+1).'" class="strankovani-dalsi">Další</a>';		
-		}	
-		
-		// Poslední
-		if ($page <= $countPages) {
-			echo '<a href="/katalog/?stranka='.($countPages+1).'" class="strankovani-posledni">Poslední</a>';		
-		}	
-		
-	}
-
+			// před aktuální stránkou
+			if ($page-2 >= 0) {
+				echo '<a href="/katalog/?stranka='.($page-2).'" class="strankovani-polozka">'.($page-1)."</a>";		
+			}
+			if ($page-1 >= 0) {
+				echo '<a href="/katalog/?stranka='.($page-1).'" class="strankovani-polozka">'.($page)."</a>";		
+			}
 			
-
+			// aktuální
+			echo '<span class="strankovani-polozka-akt">'.($page+1).'</span>';
+			
+			// po aktuálním
+			if ($page <= $countPages) {
+				echo '<a href="/katalog/?stranka='.($page+1).'" class="strankovani-polozka">'.($page+2)."</a>";		
+			}
+			if ($page+1 <= $countPages) {
+				echo '<a href="/katalog/?stranka='.($page+2).'" class="strankovani-polozka">'.($page+3)."</a>";		
+			}
+			
+			// další
+			if ($page <= $countPages) {
+				echo '<a href="/katalog/?stranka='.($page+1).'" class="strankovani-dalsi">Další</a>';		
+			}	
+			
+			// Poslední
+			if ($page <= $countPages) {
+				echo '<a href="/katalog/?stranka='.($countPages+1).'" class="strankovani-posledni">Poslední</a>';		
+			}
+		}	
+	}
+		
 ?>
 
 </div>
