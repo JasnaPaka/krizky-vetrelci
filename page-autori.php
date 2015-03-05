@@ -2,6 +2,7 @@
 	get_header();
 	$uploadDir = wp_upload_dir();
 	$autori = kv_autor_seznam();
+	$ac = kv_autor_controller();
 ?>
 
 
@@ -9,7 +10,26 @@
 <div class="inner">
 <div class="padding">
 
-<h2>Autoři</h2>
+<div id="rightMenu">
+
+	<div id="searchdatabase">
+		<form method="post" action="/katalog/autori/">
+	        <input name="typ" value="autor" type="hidden">
+	        <input id="s" name="s" placeholder="Hledat v autorech..." type="text">
+	        <input value="Hledat" type="submit">
+		</form>
+	</div>
+</div>
+
+
+<h2>
+	<?php if ($ac->getSearchValue() == null) { ?>
+		Autoři
+	<?php } else { ?>
+		Výsledek hledání v autorech pro "<?php echo $ac->getSearchValue()?>"
+	<?php }?>
+</h2>
+
 
 </div>
 </div>
@@ -17,7 +37,9 @@
 <hr />
 
 <div class="inner">
-
+<?php if (count($autori) == 0) { ?>
+	<p>Nebyl nalezen žádný autor.</p>
+<?php } else { ?>
 <?php
 	$autCount = 0;
 	foreach ($autori as $autor) {
@@ -48,6 +70,7 @@
 		if ($autCount % 3 == 0) echo '</div>';
 
 	}
+}
 ?>	
 
 <div class="clear"></div>
@@ -65,45 +88,47 @@
 		$page = (int) $_GET["stranka"];
 		$countPages = kv_autor_pages_count();
 		
-		// První
-		if ($page > 0) {
-			echo '<a href="/katalog/autori/" class="strankovani-prvni">První</a>';		
-		}		
-	
-		// Předchozí
-		if ($page-1 >= 0) {
-			echo '<a href="/katalog/autori/?stranka='.($page-1).'" class="strankovani-predchozi">Předchozí</a>';		
-		}
-	
-		// před aktuální stránkou
-		if ($page-2 >= 0) {
-			echo '<a href="/katalog/autori/?stranka='.($page-2).'" class="strankovani-polozka">'.($page-1)."</a>";		
-		}
-		if ($page-1 >= 0) {
-			echo '<a href="/katalog/autori/?stranka='.($page-1).'" class="strankovani-polozka">'.($page)."</a>";		
-		}
+		if ($countPages > 0) {
+			
+			// První
+			if ($page > 0) {
+				echo '<a href="/katalog/autori/" class="strankovani-prvni">První</a>';		
+			}		
 		
-		// aktuální
-		echo '<span class="strankovani-polozka-akt">'.($page+1).'</span>';
+			// Předchozí
+			if ($page-1 >= 0) {
+				echo '<a href="/katalog/autori/?stranka='.($page-1).'" class="strankovani-predchozi">Předchozí</a>';		
+			}
 		
-		// po aktuálním
-		if ($page <= $countPages) {
-			echo '<a href="/katalog/autori/?stranka='.($page+1).'" class="strankovani-polozka">'.($page+2)."</a>";		
+			// před aktuální stránkou
+			if ($page-2 >= 0) {
+				echo '<a href="/katalog/autori/?stranka='.($page-2).'" class="strankovani-polozka">'.($page-1)."</a>";		
+			}
+			if ($page-1 >= 0) {
+				echo '<a href="/katalog/autori/?stranka='.($page-1).'" class="strankovani-polozka">'.($page)."</a>";		
+			}
+			
+			// aktuální
+			echo '<span class="strankovani-polozka-akt">'.($page+1).'</span>';
+			
+			// po aktuálním
+			if ($page <= $countPages) {
+				echo '<a href="/katalog/autori/?stranka='.($page+1).'" class="strankovani-polozka">'.($page+2)."</a>";		
+			}
+			if ($page+1 <= $countPages) {
+				echo '<a href="/katalog/autori/?stranka='.($page+2).'" class="strankovani-polozka">'.($page+3)."</a>";		
+			}
+			
+			// další
+			if ($page <= $countPages) {
+				echo '<a href="/katalog/autori/?stranka='.($page+1).'" class="strankovani-dalsi">Další</a>';		
+			}	
+			
+			// Poslední
+			if ($page <= $countPages) {
+				echo '<a href="/katalog/autori/?stranka='.($countPages+1).'" class="strankovani-posledni">Poslední</a>';		
+			}	
 		}
-		if ($page+1 <= $countPages) {
-			echo '<a href="/katalog/autori/?stranka='.($page+2).'" class="strankovani-polozka">'.($page+3)."</a>";		
-		}
-		
-		// další
-		if ($page <= $countPages) {
-			echo '<a href="/katalog/autori/?stranka='.($page+1).'" class="strankovani-dalsi">Další</a>';		
-		}	
-		
-		// Poslední
-		if ($page <= $countPages) {
-			echo '<a href="/katalog/autori/?stranka='.($countPages+1).'" class="strankovani-posledni">Poslední</a>';		
-		}	
-		
 	}
 
 			
