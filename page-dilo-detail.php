@@ -126,7 +126,7 @@
 	
 	<div class="padding">
 		<div class="buttonsGreen">		
-			<?php if (is_user_logged_in()) { ?>
+			<?php if (is_user_logged_in() && current_user_can('edit_posts')) { ?>
 				<a class="buttonGreen" href="/wp-admin/admin.php?page=object&action=view&id=<?php echo $objekt->id ?>">UPRAVIT</a>
 	        <?php } else { ?>
 	        	<a class="buttonGreen" href='mailto:krizkyavetrelci@email.cz?subject=<?php echo addslashes($objekt->nazev) ?>: Doplnění informací'>DOPLNIT INFORMACE</a>
