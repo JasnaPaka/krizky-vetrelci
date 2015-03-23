@@ -141,7 +141,7 @@
 			
 			// Poslední
 			if ($page <= $countPages) {
-				echo '<a href="/katalog/?stranka='.($countPages+1).'" class="strankovani-posledni">Poslední</a>';		
+				echo '<a href="/katalog/?stranka='.($countPages-1).'" class="strankovani-posledni">Poslední</a>';		
 			}
 		}	
 	}
