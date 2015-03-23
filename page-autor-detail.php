@@ -54,16 +54,15 @@
 				</h2>
 			</div>
 		<?php } ?>
-	
+	</div>
 	
 
-	<div class="buttonsGreen">		
-		<?php if (is_user_logged_in()) { ?>
+	<?php if (is_user_logged_in()) { ?>
+		<div class="buttonsGreen">			
 			<a class="buttonGreen" href="/wp-admin/admin.php?page=author&action=view&id=<?php echo $autor->id ?>">UPRAVIT</a>
-        <?php } ?>
-     </div>
-
-    </div>
+		</div>
+    <?php } ?>
+     
     
 <?php if (count($objekty) == 0) { ?>
 

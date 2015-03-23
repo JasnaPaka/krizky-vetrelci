@@ -168,7 +168,7 @@
 				<?php 
 					}
 				 
-					if ($fotografiePrim != null && strlen($fotografiePrim->popis) > 0) {
+					if ($fotografiePrim != null && strlen($popis) > 0) {
 				?>	
 					<div id="photo-description"><?php echo $popis ?></div>
 				<?php		

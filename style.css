@@ -438,10 +438,20 @@ a:hover.strankovani-polozka {
 	text-decoration: underline;
 }
 
+#page.index.author .topMenu > div {
+	display: inline-block;
+	vertical-align: top;
+}
+
 #page.index.author .topMenu > div:nth-child(1) {
 	width: 250px;
 	border-right: 1px solid silver;
 	margin: 0 15px 0 15px;
+}
+
+#page.index.author .topMenu > div:nth-child(2) {
+	width: 250px;
+	margin: 0 15px 0 0;
 }
 
 #page.index.author .topMenu h1 {
