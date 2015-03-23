@@ -72,16 +72,19 @@
           <div id="header-top-right">
             
             <div id="search">
-              <form method="get" action="<?php bloginfo('url'); ?>">
-                <input type="text" name="s" placeholder="Hledat...">
-                <input type="submit" value="Hledat">
-              </form>
+				<form id="searchbox_000059552786512968692:qcvcek8b33y" action="https://www.google.com/cse">
+				    <input name="cx" value="000059552786512968692:qcvcek8b33y" type="hidden">
+				    <input name="cof" value="FORID:0" type="hidden">
+				    <input name="ie" value="utf-8" type="hidden">
+				    <input type="text" name="q" placeholder="Hledat...">
+				    <input type="submit" value="Hledat">
+				</form>
             </div>
             
             <div class="separator"></div>
   
             <div id="socials">
-              <a id="social_rss" href="<?php printf('%s/feed', get_bloginfo('url')); ?>"></a><a id="social_fb" target="_blank" href="http://facebook.com/pestujprostor"></a><a class="showpopup" id="newsletter" href="#"></a>
+              <a id="social_rss" href="<?php printf('%s/feed', get_bloginfo('url')); ?>"></a><a id="social_fb" target="_blank" href="https://www.facebook.com/groups/krizkyavetrelci/"></a><a class="showpopup" id="newsletter" href="#"></a>
 
               <div id="newsletterpopup" class="menupopup">
                <?php
