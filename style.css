@@ -481,11 +481,11 @@ a:hover.strankovani-polozka {
 	color: #85a92b;
 }
 
-#tags {
+#kat-tags {
 	
 }
 
-.tag {
+.kat-tag {
     float:left;
     margin:0 0 7px 20px;
     position:relative;
@@ -528,7 +528,7 @@ a:hover.strankovani-polozka {
     z-index:100;
 }
 
-.tag:before {
+.kat-tag:before {
     content:'';
  
     width:1.30em;
@@ -560,7 +560,7 @@ a:hover.strankovani-polozka {
     z-index:1;
 }
 
-.tag:after {
+.kat-tag:after {
     content:'';
  
     width:0.5em;
@@ -584,7 +584,7 @@ a:hover.strankovani-polozka {
     z-index:9999;
 }
 
-.tag:hover {
+.kat-tag:hover {
     background-image: -webkit-linear-gradient(top, rgb(254, 225, 141), rgb(254, 200, 108));
     background-image: -moz-linear-gradient(top, rgb(254, 225, 141), rgb(254, 200, 108));
     background-image: -o-linear-gradient(top, rgb(254, 225, 141), rgb(254, 200, 108));
@@ -595,7 +595,7 @@ a:hover.strankovani-polozka {
     border-color:#e1b160;
 }
  
-.tag:hover:before {
+.kat-tag:hover:before {
     background-image: -webkit-linear-gradient(left top, rgb(254, 225, 141), rgb(254, 200, 108));
     background-image: -moz-linear-gradient(left top, rgb(254, 225, 141), rgb(254, 200, 108));
     background-image: -o-linear-gradient(left top, rgb(254, 225, 141), rgb(254, 200, 108));

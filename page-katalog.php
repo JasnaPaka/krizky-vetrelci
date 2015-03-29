@@ -33,10 +33,10 @@
 </h2>
 
 <?php if ($page == 0 && count($oc->getAllTags()) > 0) { ?>	
-	<div id="tags">	
+	<div id="kat-tags">	
 <?php foreach ($oc->getAllTags() as $tag) { ?>
 
-<a href="/katalog/stitek/<?php printf ($tag->id) ?>/" class="tag"><?php printf ($tag->nazev) ?></a>
+<a href="/katalog/stitek/<?php printf ($tag->id) ?>/" class="kat-tag"><?php printf ($tag->nazev) ?></a>
 
 <?php } ?>
 	</div>
