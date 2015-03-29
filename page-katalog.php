@@ -3,6 +3,11 @@
 	$uploadDir = wp_upload_dir();
 	$objekty = kv_object_seznam();
 	$oc = kv_object_controller();
+	
+	$page = (int) $_GET["stranka"];
+	if ($page == null) {
+		$page = 0;	
+	} 
 ?>
 
 <div id="page" class="katalog index">
@@ -18,14 +23,28 @@
 </div>
 
 <h2>
-	<?php if ($oc->getSearchValue() == null) { ?>
+	<?php if ($oc->getIsShowedTag()) { ?>
+		Díla se štítkem '<?php printf ($oc->getCurrentTag()->nazev) ?>'
+	<?php } else if ($oc->getSearchValue() == null) { ?>
 		Katalog děl
 	<?php } else { ?>
 		Výsledek hledání v dílech pro "<?php echo $oc->getSearchValue()?>"
 	<?php }?>
 </h2>
 
+<?php if ($page == 0 && count($oc->getAllTags()) > 0) { ?>	
+	<div id="tags">	
+<?php foreach ($oc->getAllTags() as $tag) { ?>
+
+<a href="/katalog/stitek/<?php printf ($tag->id) ?>/" class="tag"><?php printf ($tag->nazev) ?></a>
+
+<?php } ?>
+	</div>
+	<div class="clear"></div>	
+<?php } ?>
+
 </div>
+
 </div>
 
 <hr />
@@ -101,7 +120,6 @@
 
 <?php
 	if (count($objekty) > 0) {
-		$page = (int) $_GET["stranka"];
 		$countPages = kv_object_pages_count();
 		
 		if ($countPages > 0) {

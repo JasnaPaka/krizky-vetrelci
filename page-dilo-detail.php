@@ -234,11 +234,13 @@
 		 <?php if ($objekt->zpracovano && count($zdroje) > 0) { ?>
 		 
 		 <div id="zdroje">
-		 	<hr />
+			<hr />
 		 	<h3>Literatura a prameny</h3>
-		 	<p>
+		 	<p><ul>
 		 	<?php
 		 		foreach ($zdroje as $zdroj) {
+		 			echo "<li>"; 
+					
 		 			if (strlen($zdroj->url) > 0) {
 		 				echo '<a href="'.$zdroj->url.'">'.$zdroj->nazev.'</a>';	
 					} else {
@@ -246,12 +248,16 @@
 					}
 					
 					if (strlen($zdroj->isbn) > 0) {
-						echo ' (ISBN: '.$zdroj->isbn.')';
+						echo ' ISBN: '.$zdroj->isbn.'. Zjistit dostupnost v: <a 
+							href="http://aleph20.svkpl.cz/F/?func=find-d&find_code=ISN&request='.str_replace("-","",$zdroj->isbn).'">
+							Studijní a vědecká knihovna Plzeňskeho kraje</a>';
 					}
 					
-					echo "<br />";
+					echo "</li>";
+					//echo "<br />";
 				}
 		 	?>
+		 	</ul>
 		 	</p>
 		 </div>
 		 
