@@ -2,6 +2,7 @@
 	get_header();
 	$objekt = kv_object_info();
 	$uploadDir = wp_upload_dir();
+	$oc = kv_object_controller();
 	
 	$kategorie = $objekt->kategorie;
 	$autori = $objekt->autori;
@@ -32,6 +33,15 @@
   <div class="inner">
 
     <div class="padding">
+    
+    	<?php if (count($oc->getTagsForObject($objekt->id)) > 0) { ?>	
+      	<div id="searchdatabase">
+			<?php foreach ($oc->getTagsForObject($objekt->id) as $tag) { ?>
+			<a href="/katalog/stitek/<?php printf ($tag->id) ?>/" class="kat-tag"><?php printf ($tag->nazev) ?></a>
+			<?php } ?>
+	    </div>
+	    <?php } ?>
+    	
 
       <h2><?php echo $objekt->nazev ?></h2>         
 
