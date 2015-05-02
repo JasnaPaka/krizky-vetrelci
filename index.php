@@ -29,7 +29,8 @@
 		<div class="aaa">
 	  
         <?php
-          $allposts = get_all_posts('post', 2);
+          $args = array( 'posts_per_page' => 2 );
+		  $allposts = get_posts($args);
           foreach ($allposts as $post)
           {
             switch_to_blog($post->blog_id);
