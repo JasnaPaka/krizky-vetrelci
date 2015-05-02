@@ -230,7 +230,7 @@ Version: 1.0
 	margin: 15px 0 0 0;
 }
 
-#titulka-mapa-button {
+#titulka-mapa-button,#titulka-zpravy-button {
 	margin: 40px 0 20px 0;
 }
 
@@ -604,4 +604,9 @@ a:hover.strankovani-polozka {
     filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,StartColorStr='#fee18d', EndColorStr='#fec86c');
  
     border-color:#e1b160;
+}
+
+
+#page.titulni .contentheight {
+	min-height: 1500px;
 }
