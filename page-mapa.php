@@ -45,6 +45,31 @@
     function getMarkers() {
     	jQuery('#mappage #filters').css({opacity: 1});
     }
+    
+    function selectAllCategories(checkAll) {
+    
+		var zoom = map.getZoom();
+		
+		for (i=0; i<markers.length; i++) {
+			categoryId = "category" + markers[i].category;
+			if (checkAll) {
+	    		document.getElementById(categoryId).className = document.getElementById(categoryId).className + " active";
+	    		document.getElementById(categoryId).setAttribute("data-checked", "active");
+			} else {
+				document.getElementById(categoryId).className = document.getElementById(categoryId).className.replace(/\bactive\b/,'');
+				document.getElementById(categoryId).setAttribute("data-checked", "");
+	    	}
+		
+			if (checkAll && markers[i].minZoom <= zoom) {
+				markers[i].setMap(map);
+			} else {
+				markers[i].setMap(null);
+			}
+		}
+		
+		visibilityChangeNeexistujici(false);
+		visibilityChangeBezFotografie(false);
+    }
 	
 	function getURLParameter(name) {
 	  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
@@ -224,7 +249,8 @@
 				
 				<div class="scroll">
 					<div class="tags">
-						<h3>Dle kategorie</h3>
+						<h3>Dle kategorie 
+						(<a href="#" onclick="selectAllCategories(true)" title="Označí všechny kategorie">vše</a>/<a href="#" onclick="selectAllCategories(false)" title="Zruší označení všech kategorií">nic</a>)</h3>
 						<?php
 							foreach (kv_MapCategories() as $category) {
 						?>
