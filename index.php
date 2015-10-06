@@ -115,8 +115,29 @@
 		<?php 
 			$uploadDir = wp_upload_dir();
 			$objects = array();
-			for ($i = 0; $i<3; $i++) {
-				$objects[] = kv_random_object();;
+			$searches = 1;
+			
+			$i = 1;
+			while ($i <= 3) {		
+				$obj = kv_random_object();
+				
+				// Z každé kategorie pouze jeden náhodný objekt, zkusíme to náhodně 10x, pak končíme (ochrana proti zacyklení)
+				$found = false; 
+				foreach ($objects as $obEx) {
+					if ($obEx->kategorie == $obj->kategorie) {
+						$found = true;	
+					}
+				}
+				
+				if ($found && $searches < 10) {
+					$searches++;
+					continue;	
+				}
+				
+				$searches = 0;
+								
+				$i++;
+				$objects[] = $obj;
 			}
 			
 			foreach($objects as $obj) {
