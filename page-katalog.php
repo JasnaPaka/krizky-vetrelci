@@ -58,6 +58,10 @@
 <?php 
 
 } else {
+	if ($oc->getIsShowedTag()) {
+		printf("<p>Počet děl se štítkem: %d</p><br />", sizeof($objekty));	
+	}
+	
 	$objCount = 0;
 	foreach ($objekty as $objekt) {
 		$objCount++;
