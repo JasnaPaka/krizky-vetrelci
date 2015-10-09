@@ -23,11 +23,25 @@
 
 
 <h2>
-	<?php if ($ac->getSearchValue() == null) { ?>
-		Autoři
-	<?php } else { ?>
-		Výsledek hledání v autorech pro "<?php echo $ac->getSearchValue()?>"
-	<?php }?>
+	<?php 
+		if ($ac->getFirstCharFromURL() != null) {
+			printf("Autoři začínající na '%s'", $ac->getFirstCharFromURL()); 
+		} else if ($ac->getSearchValue() == null) { ?>
+			Autoři
+	<?php 			
+		} else { ?>
+		Výsledek hledání v autorech pro "<?php printf($ac->getSearchValue()) ?>"
+	<?php }	
+	if ($ac->getFirstCharFromURL() != null || $ac->getSearchValue() == null) {
+			printf("<hr />");
+			printf("<div class=\"katalog-strankovani\">");	
+			foreach($ac->getUniqueFirstCharSurname() as $ch) {
+				printf ("<a href=\"/katalog/autori/?znak=%s\" class=\"strankovani-polozka\">%s</a>", urlencode($ch->znak), $ch->znak); 	
+			}
+			printf("</div>");			
+	}
+	
+	?>
 </h2>
 
 
@@ -51,17 +65,17 @@
 			$img = get_template_directory_uri()."-child-krizkyavetrelci/images/foto-neni-340.png";
 		}
 		
-		if ($autCount % 3 == 1) echo '<div>';
+		if ($autCount % 3 == 1) printf('<div>');
 ?>
 
 <div class="post postitem">
-	<a href="/katalog/autor/<?php echo $autor->id ?>/" title="Zobrazení informací o autorovi">
-		<img src="<?php echo $img ?>" alt="Ukázka díla autora" class="katalog-dilo-obr" />
+	<a href="/katalog/autor/<?php printf($autor->id) ?>/" title="Zobrazení informací o autorovi">
+		<img src="<?php printf($img) ?>" alt="Ukázka díla autora" class="katalog-dilo-obr" />
 	</a>
 	
 	<div class="padding paddingaut">
-		<h3><a href="/katalog/autor/<?php echo $autor->id ?>/" title="Zobrazení informací o autorovi">
-			<?php echo trim($autor->titul_pred." ".$autor->jmeno." ".$autor->prijmeni." ".$autor->titul_za) ?>
+		<h3><a href="/katalog/autor/<?php printf($autor->id) ?>/" title="Zobrazení informací o autorovi">
+			<?php printf(trim($autor->titul_pred." ".$autor->jmeno." ".$autor->prijmeni." ".$autor->titul_za)) ?>
 		</a></h3>	
 	</div>
 </div>
