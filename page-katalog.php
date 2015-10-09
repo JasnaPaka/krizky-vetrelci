@@ -59,6 +59,11 @@
 
 } else {
 	if ($oc->getIsShowedTag()) {
+		$popis = $oc->getCurrentTag()->popis;
+		
+		if (strlen(trim($popis)) > 0) {
+			printf("<p>%s</p>", $popis);
+		}
 		printf("<p>Počet děl se štítkem: %d</p><br />", sizeof($objekty));	
 	}
 	
