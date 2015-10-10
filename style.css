@@ -451,6 +451,7 @@ a:hover.strankovani-polozka {
 
 #page.index.author .topMenu > div:nth-child(2) {
 	width: 250px;
+	border-right: 1px solid silver;
 	margin: 0 15px 0 0;
 }
 

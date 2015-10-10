@@ -54,6 +54,20 @@
 				</h2>
 			</div>
 		<?php } ?>
+		<?php if ($autor->web != null) { ?>
+			<div>
+				<h1>Web</h1>
+				<h2>
+					<?php
+						$caption = $autor->web;
+						if (strlen($autor->web) > 40) {
+							$caption = substr($autor->web, 0, 40)."...";
+						}						
+						printf ('<a href="%s">%s</a>', $autor->web, $caption);
+					?>
+				</h2>
+			</div>
+		<?php } ?>
 	</div>
 	
 
