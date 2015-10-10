@@ -141,7 +141,7 @@
 <hr />
 <h3>Přehled děl</h3>
 	
-<p>Celkový počet děl: <?php echo $autor->pocet ?></p>
+<p id="pocet-del">Celkový počet děl: <?php echo $autor->pocet ?></p>
 	
 <?php	
 	$objCount = 0;

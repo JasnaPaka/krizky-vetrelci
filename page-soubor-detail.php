@@ -59,7 +59,7 @@
 <hr />
 <h3>Přehled děl</h3>
 	
-<p>Celkový počet děl: <?php echo $collection->pocet ?></p>
+<p id="pocet-del">Celkový počet děl: <?php echo $collection->pocet ?></p>
 	
 <?php	
 	$objCount = 0;

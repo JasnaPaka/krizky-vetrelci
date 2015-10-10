@@ -611,3 +611,67 @@ a:hover.strankovani-polozka {
 #page.titulni .contentheight {
 	min-height: 1500px;
 }
+
+/* pro menší displaye */
+@media (max-width: 1020px) {
+	#page.katalog p {
+		margin: 15px 15px 0 15px;
+	}
+	
+	#zdroje, #dila {
+		margin: 15px 15px 0 15px;
+	}
+	
+	#page.katalog #pocet-del {
+		margin: 15px 0 15px 0;
+	}
+	
+	#page.index.author .topMenu > div:nth-child(1) {
+		width: 100%;
+		border-right: 0;
+		margin: 0 0 15px 15px;
+	}
+	
+	#page.index.author .topMenu > div:nth-child(2) {
+		width: 100%;
+		border-right: 0;
+		margin: 0 0 15px 15px;
+	}
+	
+	#page.index.author .topMenu > div:nth-child(3) {
+		margin: 0 0 0 15px;
+	}
+	
+	#page.index.podnet .topMenu > div:nth-child(1) {
+		margin-left: 15px;
+	}	
+	
+	#page.index.podnet .topMenu > div:nth-child(2) {
+		margin-left: 15px;
+	}
+	
+	#page.index.podnet .topMenu > div:nth-child(3) {
+		margin-left: 15px;
+	}	
+	
+	#page.index.podnet .topMenu > div:nth-child(4) {
+		margin-left: 15px;
+	}	
+	
+	#page.index.author .buttonsGreen {
+		margin-left: 15px;
+	}
+	
+	#map-box {
+		float:left;
+	}
+}
+
+@media (max-width: 640px) {
+	#obsah-container {
+		-webkit-column-count: 1;
+	    -moz-column-count: 1;
+	    column-count: 1;
+	}
+
+}
