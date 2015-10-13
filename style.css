@@ -667,6 +667,10 @@ a:hover.strankovani-polozka {
 	}
 }
 
+.neevidovano {
+	color: #A2A1A1;
+}
+
 @media (max-width: 640px) {
 	#obsah-container {
 		-webkit-column-count: 1;

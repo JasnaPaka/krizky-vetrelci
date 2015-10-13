@@ -58,7 +58,7 @@
 					if (strlen($objekt->prezdivka) > 2) {
 						echo $objekt->prezdivka;	
 					} else {
-						echo "<em>(není uvedena)</em>";	
+						printf('<em class="neevidovano">(není uvedena)</em>');
 					}
 				?>
 			</h2>
@@ -78,7 +78,7 @@
 					}
 					
 					if (count($autori) == 0) {
-						echo "(nejsou uvedeni)";	
+						printf('<em class="neevidovano">(nejsou uvedeni)</em>');	
 					}
 				?>
 			</h2>
@@ -89,7 +89,7 @@
 					if (strlen($objekt->pristupnost) > 2) {
 						echo $objekt->pristupnost;	
 					} else {
-						echo "<em>(není uvedena)</em>";	
+						printf('<em class="neevidovano">(není uvedena)</em>');	
 					}
 				?>
 			</h2>
@@ -101,7 +101,7 @@
 					if (strlen($objekt->rok_vzniku) > 2) {
 						echo $objekt->rok_vzniku;	
 					} else {
-						echo "<em>(není uveden)</em>";	
+						printf('<em class="neevidovano">(není uveden)</em>');
 					}
 				?>
 			</h2>
@@ -116,7 +116,7 @@
 					if (strlen($objekt->material) > 2) {
 						echo $objekt->material;	
 					} else {
-						echo "<em>(není uveden)</em>";	
+						printf('<em class="neevidovano">(není uveden)</em>');	
 					}
 				?>			
 			</h2>

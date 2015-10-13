@@ -37,9 +37,9 @@
 		<div>
 			<h1>Narozen(a)</h1>
 			<h2>
-				<?php if ($autor->datum_narozeni == null) { ?>
-					(neuvedeno)
-				<?php } else {
+				<?php if ($autor->datum_narozeni == null) {
+					printf('<em class="neevidovano">(neuvedeno)</em>');
+				} else {
 					echo date("j. n. Y", strtotime($autor->datum_narozeni));	
 				} ?>
 			</h2>
