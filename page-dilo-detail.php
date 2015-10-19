@@ -43,20 +43,21 @@
 	    <?php } ?>
     	
 
-      <h2><?php echo $objekt->nazev ?></h2>         
+      <h2><?php printf($objekt->nazev) ?></h2>         
 
     </div>
 
 	<div class="topMenu">
 		<div>
 			<h1>Kategorie</h1>
-			<h2><?php echo $kategorie->nazev ?></h2>
+			<h2><?php printf('<a href="/katalog/kategorie/%s/" title="Přehled všech děl v kategorii">%s</a>', 
+						$kategorie->id, $kategorie->nazev); ?></h2> 
 			<div class="space"></div>
 			<h1>Přezdívka</h1>
 			<h2>
 				<?php
 					if (strlen($objekt->prezdivka) > 2) {
-						echo $objekt->prezdivka;	
+						printf($objekt->prezdivka);	
 					} else {
 						printf('<em class="neevidovano">(není uvedena)</em>');
 					}
@@ -70,9 +71,10 @@
 					$isFirst = true;
 					foreach ($autori as $autor) {
 						if (!$isFirst) {
-							echo ", ";	
+							printf(", ");	
 						}
-						echo '<a href="/katalog/autor/'.$autor->id.'/">'.trim($autor->titul_pred." ".$autor->jmeno." ".$autor->prijmeni." ".$autor->titul_za)."</a>";
+						printf('<a href="/katalog/autor/%s/" title="Informace o autorovi">%s</a>', 
+							$autor->id, trim($autor->titul_pred." ".$autor->jmeno." ".$autor->prijmeni." ".$autor->titul_za));
 						
 						$isFirst = false;	
 					}
@@ -87,7 +89,7 @@
 			<h2>
 				<?php
 					if (strlen($objekt->pristupnost) > 2) {
-						echo $objekt->pristupnost;	
+						printf($objekt->pristupnost);	
 					} else {
 						printf('<em class="neevidovano">(není uvedena)</em>');	
 					}
@@ -99,7 +101,7 @@
 			<h2>
 				<?php
 					if (strlen($objekt->rok_vzniku) > 2) {
-						echo $objekt->rok_vzniku;	
+						printf($objekt->rok_vzniku);	
 					} else {
 						printf('<em class="neevidovano">(není uveden)</em>');
 					}
@@ -107,14 +109,14 @@
 			</h2>
 			<div class="space"></div>
 			<h1>GPS</h1>
-			<h2><?php echo round($objekt->latitude, 6).",".round($objekt->longitude, 6) ?></h2>
+			<h2><?php printf(round($objekt->latitude, 6).",".round($objekt->longitude, 6)) ?></h2>
 		</div>
 		<div>
 			<h1>Materiál</h1>
 			<h2>
 				<?php
 					if (strlen($objekt->material) > 2) {
-						echo $objekt->material;	
+						printf($objekt->material);	
 					} else {
 						printf('<em class="neevidovano">(není uveden)</em>');	
 					}
@@ -125,9 +127,9 @@
 			<h2>
 				<?php
 					if (strlen($objekt->pamatkova_ochrana) > 2) {
-						echo '<a href="http://monumnet.npu.cz/pamfond/list.php?CiRejst='.$objekt->pamatkova_ochrana.'">'.$objekt->pamatkova_ochrana.'</a>';	
+						printf('<a href="http://monumnet.npu.cz/pamfond/list.php?CiRejst='.$objekt->pamatkova_ochrana.'">'.$objekt->pamatkova_ochrana.'</a>');	
 					} else {
-						echo "ne";	
+						printf("ne");	
 					}
 				?>			
 			</h2>
@@ -137,9 +139,9 @@
 	<div class="padding">
 		<div class="buttonsGreen">		
 			<?php if (is_user_logged_in() && current_user_can('edit_posts')) { ?>
-				<a class="buttonGreen" href="/wp-admin/admin.php?page=object&action=view&id=<?php echo $objekt->id ?>">UPRAVIT</a>
+				<a class="buttonGreen" href="/wp-admin/admin.php?page=object&action=view&id=<?php printf($objekt->id) ?>">UPRAVIT</a>
 	        <?php } else { ?>
-	        	<a class="buttonGreen" href='mailto:krizkyavetrelci@email.cz?subject=<?php echo addslashes($objekt->nazev) ?>: Doplnění informací'>DOPLNIT INFORMACE</a>
+	        	<a class="buttonGreen" href='mailto:krizkyavetrelci@email.cz?subject=<?php printf(addslashes($objekt->nazev)) ?>: Doplnění informací'>DOPLNIT INFORMACE</a>
 	        <?php } ?>
 	     </div>
 	     
@@ -170,22 +172,22 @@
 		     	?>
 		     		
 		     	
-		     		<a href="<?php echo $uploadDir['baseurl'].$fotografiePrim->img_large ?>" alt="Pro zvětšení klepněte"
-		     			data-lightbox-gallery="lightbox[gallery-<?php echo $objekt->id ?>]" title="<?php echo $popis ?>" 
-		     			rel="lightbox[gallery-<?php echo $objekt->id ?>]">
-		     			<img src="<?php echo $uploadDir['baseurl'].$fotografiePrim->img_512 ?>" alt="Fotografie díla" />
+		     		<a href="<?php printf($uploadDir['baseurl'].$fotografiePrim->img_large) ?>" alt="Pro zvětšení klepněte"
+		     			data-lightbox-gallery="lightbox[gallery-<?php printf($objekt->id) ?>]" title="<?php printf($popis) ?>" 
+		     			rel="lightbox[gallery-<?php printf($objekt->id) ?>]">
+		     			<img src="<?php printf($uploadDir['baseurl'].$fotografiePrim->img_512) ?>" alt="Fotografie díla" />
 					</a>
 				<?php 
 					}
 				 
 					if ($fotografiePrim != null && strlen($popis) > 0) {
 				?>	
-					<div id="photo-description"><?php echo $popis ?></div>
+					<div id="photo-description"><?php printf($popis) ?></div>
 				<?php		
 					}
 					
 					if (count($fotografieOst) > 0) {	
-						echo '<div id="photo-small">';
+						printf('<div id="photo-small">');
 						foreach ($fotografieOst as $photo) {
 							
 				     		$popis = $photo->popis;
@@ -200,25 +202,25 @@
 							$popis = trim ($popis);
 							
 				?>							
-		     		<a href="<?php echo $uploadDir['baseurl'].$photo->img_large ?>" alt="Pro zvětšení klepněte"
-		     			data-lightbox-gallery="lightbox[gallery-<?php echo $objekt->id ?>]" title="<?php echo $popis ?>" 
-		     			rel="lightbox[gallery-<?php echo $objekt->id ?>]" class="photo-preview">
+		     		<a href="<?php printf($uploadDir['baseurl'].$photo->img_large); ?>" alt="Pro zvětšení klepněte"
+		     			data-lightbox-gallery="lightbox[gallery-<?php printf($objekt->id) ?>]" title="<?php printf($popis) ?>" 
+		     			rel="lightbox[gallery-<?php printf($objekt->id) ?>]" class="photo-preview">
 		     			
 		     			<?php if ($photo->img_100 == null) { ?>
 		     				<img src="<?php bloginfo('template_url') ?>-child-krizkyavetrelci/images/foto-neni-100.png" alt="Fotografie díla" />
 		     			<?php } else  { ?>
-		     				<img src="<?php echo $uploadDir['baseurl'].$photo->img_100 ?>" alt="Fotografie není dostupná" />
+		     				<img src="<?php printf($uploadDir['baseurl'].$photo->img_100) ?>" alt="Fotografie není dostupná" />
 		     			<?php } ?>
 					</a>						
 				<?php													
 						}
-						echo '</div>';
+						printf('</div>');
 				}
 					
 				?>
 		     </div>
 		     <div id="map-box">
-				<?php echo $objekt->mapa ?>
+				<?php printf($objekt->mapa) ?>
 		     </div>
 
 		 </div>
@@ -229,12 +231,12 @@
 		 
 		 	<?php if ($objekt->zpracovano) { ?>
 			 	<div id="obsah-perex">
-			 		<?php echo stripslashes($objekt->popis) ?>
+			 		<?php printf(stripslashes($objekt->popis)) ?>
 			 	</div>
 			 	<div id="obsah">
 			 		<?php
 			 			if ($objekt->zpracovano) { 
-			 				echo stripslashes($objekt->obsah);
+			 				printf(stripslashes($objekt->obsah));
 						}
 			 		?>
 			 	</div>
@@ -249,22 +251,21 @@
 		 	<p><ul>
 		 	<?php
 		 		foreach ($zdroje as $zdroj) {
-		 			echo "<li>"; 
+		 			printf("<li>"); 
 					
 		 			if (strlen($zdroj->url) > 0) {
-		 				echo '<a href="'.$zdroj->url.'">'.$zdroj->nazev.'</a>';	
+		 				printf('<a href="'.$zdroj->url.'">'.$zdroj->nazev.'</a>');	
 					} else {
-						echo $zdroj->nazev;	
+						printf($zdroj->nazev);	
 					}
 					
 					if (strlen($zdroj->isbn) > 0) {
-						echo ' ISBN: '.$zdroj->isbn.'. Zjistit dostupnost v: <a 
+						printf(' ISBN: '.$zdroj->isbn.'. Zjistit dostupnost v: <a 
 							href="http://aleph20.svkpl.cz/F/?func=find-d&find_code=ISN&request='.str_replace("-","",$zdroj->isbn).'">
-							Studijní a vědecká knihovna Plzeňskeho kraje</a>';
+							Studijní a vědecká knihovna Plzeňskeho kraje</a>');
 					}
 					
-					echo "</li>";
-					//echo "<br />";
+					printf("</li>");
 				}
 		 	?>
 		 	</ul>
