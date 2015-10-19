@@ -79,7 +79,8 @@
 			$img = get_template_directory_uri()."-child-krizkyavetrelci/images/foto-neni-340.png";
 		}
 		
-		if ($objCount % 3 == 1) printf('<div>');
+		if (!$oc->getIsZobrazeniList()) {		
+			if ($objCount % 3 == 1) printf('<div>');
 ?>
 
 <div class="post postitem">
@@ -111,8 +112,64 @@
 </div>
 
 <?php
-		if ($objCount % 3 == 0) printf('</div>');
+			if ($objCount % 3 == 0) printf('</div>');			
+		} // konec zobrazení "grid" 
+		else {
+			foreach ($objekty as $objekt) {
+?>	
 
+<ul class="line_list">
+<li class="postitem rocnik_2015-2016 autor_231 kategorie_mam-napad ">
+	<article class="inner">
+
+                  <a href="http://pestujprostor.plzne.cz/podnet/chybejici-prechod-na-roudne/"><div class="img_block">
+                  
+                  <img src="http://pestujprostor.plzne.cz/wp-content/uploads/sites/2/2015/10/IMG_7849-340x212.jpg" class="attachment-initiative-recent wp-post-image" alt="IMG_7849" height="212" width="340">                  
+                  <span class="line_list_icon green"></span></div></a>
+
+                  <div class="center_block">
+
+                    <h3>chybějící přechod na roudné</h3>
+
+                    <p>Naprosto chybí přechod v Zadní Roudné!!!!!!!!!!!!!!!!! Myslím si minimálně v okolí autobusové zastávky by přechod neměl chybět!!! Nejbližší, v Malické...</p>
+                    
+					
+	                    <a href="http://pestujprostor.plzne.cz/podnet/chybejici-prechod-na-roudne/" class="button orange">Detaily</a>
+	
+	                    <a href="http://pestujprostor.plzne.cz/diskusni-prispevek/?b=2&amp;p=chybejici-prechod-na-roudne" class="button orange">Diskuse</a>
+
+					
+                  </div>
+
+                  <div class="right_block">
+
+                    <h4>Kategorie</h4>
+
+                    <p>
+
+                    Mám nápad
+                    </p>
+
+                    <h4>Autor podnětu</h4>
+
+                    <p>
+
+                    alena mickova
+                    </p>
+
+                    <h4>Vloženo</h4>
+
+                    <p>16. 10. 2015</p>
+
+                  </div>
+
+		</article>
+	</li>
+</ul>	
+	
+<?php		
+			}
+		} 
 	}
 ?>	
 

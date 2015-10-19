@@ -671,6 +671,79 @@ a:hover.strankovani-polozka {
 	color: #A2A1A1;
 }
 
+#page.katalog .line_list {
+    margin-bottom: 47px;
+    text-align: left;
+}
+
+#page.katalog .line_list li {
+    width: 100%;
+    min-height: 212px;
+    overflow: hidden;
+    border-top: 1px solid #CCC;
+}
+
+
+#page.katalog div.inner:nth-child(3){
+    text-align: center;
+}
+
+#page.katalog .line_list li article div.center_block {
+    width: 40%;
+    min-height: 212px;
+    border-right: 1px solid #CCC;
+    padding: 0px 36px 10px;
+    text-align: left;
+}
+
+#page.katalog .line_list li article div.right_block {
+    width: 220px;
+    height: 196px;
+    padding: 16px 0px 0px 30px;
+    text-align: left;
+}
+
+#page.katalog .line_list li article div.center_block h3 {
+    font-size: 19px;
+    line-height: 23px;
+    margin: 21px 0px 12px;
+}
+
+#page.katalog .line_list li article div.center_block p {
+    font-size: 14px;
+    line-height: 20px;
+    height: 80px;
+    overflow: hidden;
+    color: #4D4D4D;
+}
+
+#page.katalog .line_list li article div.center_block .button {
+    margin: 8px 11px 0px 0px;
+    float: left;
+}
+
+#page.katalog .line_list li article div {
+    float: left;
+}
+
+#page.katalog .line_list li article div.right_block h4 {
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 800;
+    color: #00AF3F;
+}
+
+#page.katalog .line_list li article div.right_block p {
+    font-size: 14px;
+    line-height: 19px;
+    color: #4D4D4D;
+}
+
+#page.katalog .line_list li article div.right_block p {
+    margin: 0px;
+}
+
+
 @media (max-width: 640px) {
 	#obsah-container {
 		-webkit-column-count: 1;
