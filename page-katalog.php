@@ -14,19 +14,28 @@
 <div class="inner">
 <div class="padding">
 
-<div id="searchdatabase">
-	<form method="post" action="/katalog/">
-        <input name="typ" value="dilo" type="hidden">
-        <input id="s" name="s" placeholder="Hledat v dílech..." type="text">
-        <input value="Hledat" type="submit">
-	</form>
+<div class="rightMenu">
+	<div id="viewdatabase">
+    	<a href="?zobrazeni=grid"><span id="vdgrid" class="active"></span></a>
+        <a href="?zobrazeni=list"><span id="vdlist" class=""></span></a>
+    </div>
+    <div class="separator"></div>
+	<div id="searchdatabase">
+		<form method="post" action="/katalog/">
+	        <input name="typ" value="dilo" type="hidden">
+	        <input id="s" name="s" placeholder="Hledat v dílech..." type="text">
+	        <input value="Hledat" type="submit">
+		</form>
+	</div>  
 </div>
+
 
 <h2>
 	<?php if ($oc->getIsShowedTag()) { ?>
 		Díla se štítkem '<?php printf ($oc->getCurrentTag()->nazev) ?>'
 	<?php } else if ($oc->getIsShowedCategory()) { ?>		
 		Kategorie děl '<?php printf ($oc->getCurrentCategory()->nazev) ?>'
+		<?php if ($oc->getIShowedBezAutora()) { ?>(bez autora)<?php } ?>
 	<?php } else if ($oc->getSearchValue() == null) { ?>
 		Katalog děl
 	<?php } else { ?>
@@ -115,51 +124,52 @@
 			if ($objCount % 3 == 0) printf('</div>');			
 		} // konec zobrazení "grid" 
 		else {
-			foreach ($objekty as $objekt) {
+			
 ?>	
 
 <ul class="line_list">
 <li class="postitem rocnik_2015-2016 autor_231 kategorie_mam-napad ">
 	<article class="inner">
 
-                  <a href="http://pestujprostor.plzne.cz/podnet/chybejici-prechod-na-roudne/"><div class="img_block">
+                  <a href="/katalog/dilo/<?php printf ($objekt->id) ?>/" title="Zobrazení informací o díle"><div class="img_block">
                   
-                  <img src="http://pestujprostor.plzne.cz/wp-content/uploads/sites/2/2015/10/IMG_7849-340x212.jpg" class="attachment-initiative-recent wp-post-image" alt="IMG_7849" height="212" width="340">                  
+                  <img src="<?php printf($img)?>" class="attachment-initiative-recent wp-post-image" alt="Náhled" height="212" width="340">                  
                   <span class="line_list_icon green"></span></div></a>
 
                   <div class="center_block">
 
-                    <h3>chybějící přechod na roudné</h3>
+                    <h3><a href="/katalog/dilo/<?php printf ($objekt->id) ?>/" title="Zobrazení informací o díle"><?php printf ($objekt->nazev)?></a></h3>
 
-                    <p>Naprosto chybí přechod v Zadní Roudné!!!!!!!!!!!!!!!!! Myslím si minimálně v okolí autobusové zastávky by přechod neměl chybět!!! Nejbližší, v Malické...</p>
-                    
-					
-	                    <a href="http://pestujprostor.plzne.cz/podnet/chybejici-prechod-na-roudne/" class="button orange">Detaily</a>
-	
-	                    <a href="http://pestujprostor.plzne.cz/diskusni-prispevek/?b=2&amp;p=chybejici-prechod-na-roudne" class="button orange">Diskuse</a>
-
-					
+					<?php if (strlen($objekt->popis) > 0) { ?>
+                    	<p><?php printf ($objekt->popis)?></p>
+                    <?php } ?>
+                    					
                   </div>
 
                   <div class="right_block">
 
                     <h4>Kategorie</h4>
 
-                    <p>
+                    <p><a href="/katalog/kategorie/<?php printf ($objekt->kategorie)?>/" 
+                    	title="Zobrazí seznam děl v kategorii"><?php printf ($objekt->katnazev)?></a></p>
 
-                    Mám nápad
+                    <h4><?php if (count($objekt->autori) > 1) { printf("Autoři"); } else { printf("Autor"); } ?>:</h4>
+
+                    <p><?php if (count($objekt->autori) == 0) { ?>
+						nejsou známi
+					<?php } else {
+						$isFirst = true; 
+						foreach ($objekt->autori as $autor) {
+							if (!$isFirst) {
+								printf(", ");	
+							}
+							
+							printf('<a href="/katalog/autor/'.$autor->id.'/">'.trim($autor->titul_pred." ".$autor->jmeno." ".$autor->prijmeni." ".$autor->titul_za)."</a>");
+							
+							$isFirst = false;
+						}
+					} ?>
                     </p>
-
-                    <h4>Autor podnětu</h4>
-
-                    <p>
-
-                    alena mickova
-                    </p>
-
-                    <h4>Vloženo</h4>
-
-                    <p>16. 10. 2015</p>
 
                   </div>
 
@@ -168,7 +178,6 @@
 </ul>	
 	
 <?php		
-			}
 		} 
 	}
 ?>	

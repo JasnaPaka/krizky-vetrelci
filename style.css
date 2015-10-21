@@ -726,11 +726,19 @@ a:hover.strankovani-polozka {
     float: left;
 }
 
+#page.katalog .line_list li article div a {
+	color: #595959;
+}
+
+#page.katalog .line_list li article div a:hover {
+	text-decoration: underline;
+}
+
 #page.katalog .line_list li article div.right_block h4 {
     font-size: 14px;
     line-height: 24px;
     font-weight: 800;
-    color: #00AF3F;
+    color: #595959;
 }
 
 #page.katalog .line_list li article div.right_block p {
@@ -752,3 +760,21 @@ a:hover.strankovani-polozka {
 	}
 
 }
+
+#viewdatabase {
+    float: right;
+    position: relative;
+    top: 22px;
+    width: 55px;
+    height: 28px;
+    background: transparent url("i/view_separator.png") no-repeat scroll center center;
+}
+
+.rightMenu .separator {
+    float: right;
+    padding: 0px 20px 0px 0px;
+    margin: 10px 20px 0px 0px;
+    border-right: 1px solid #CCC;
+    height: 52px;
+}
+
