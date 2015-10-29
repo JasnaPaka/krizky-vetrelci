@@ -16,12 +16,12 @@
 
 <div class="rightMenu">
 	<div id="viewdatabase">
-    	<a href="?zobrazeni=grid"><span id="vdgrid" class="active"></span></a>
-        <a href="?zobrazeni=list"><span id="vdlist" class=""></span></a>
+    	<a href="?zobrazeni=grid"><span id="vdgrid" class="<?php if (!$oc->getIsZobrazeniList()) printf("active"); ?>"></span></a>
+        <a href="?zobrazeni=list"><span id="vdlist" class="<?php if ($oc->getIsZobrazeniList()) printf("active"); ?>">"></span></a>
     </div>
     <div class="separator"></div>
 	<div id="searchdatabase">
-		<form method="post" action="/katalog/">
+		<form method="post" action="/katalog/<?php printf($oc->getZobrazeniStr(false)) ?>">
 	        <input name="typ" value="dilo" type="hidden">
 	        <input id="s" name="s" placeholder="Hledat v dílech..." type="text">
 	        <input value="Hledat" type="submit">
@@ -200,51 +200,50 @@
 	if (count($objekty) > 0) {
 		$countPages = kv_object_pages_count();
 		
-		
 		$subcat = "";
 		$category = $oc->getCurrentCategory();
 		if ($category != null) {
 			$subcat = "kategorie/".$category->id."/";	
-		}
+		}				
 		
 		if ($countPages > 0) {
 			// První
 			if ($page > 0) {
-				printf('<a href="/katalog/'.$subcat.'" class="strankovani-prvni">První</a>');		
+				printf('<a href="/katalog/'.$subcat.$oc->getZobrazeniStr(false).'" class="strankovani-prvni">První</a>');		
 			}		
 		
 			// Předchozí
 			if ($page-1 >= 0) {
-				printf('<a href="/katalog/'.$subcat.'?stranka='.($page-1).'" class="strankovani-predchozi">Předchozí</a>');		
+				printf('<a href="/katalog/'.$subcat.'?stranka='.($page-1).$oc->getZobrazeniStr(true).'" class="strankovani-predchozi">Předchozí</a>');		
 			}
 		
 			// před aktuální stránkou
 			if ($page-2 >= 0) {
-				printf('<a href="/katalog/'.$subcat.'?stranka='.($page-2).'" class="strankovani-polozka">'.($page-1)."</a>");		
+				printf('<a href="/katalog/'.$subcat.'?stranka='.($page-2).$oc->getZobrazeniStr(true).'" class="strankovani-polozka">'.($page-1)."</a>");		
 			}
 			if ($page-1 >= 0) {
-				printf('<a href="/katalog/'.$subcat.'?stranka='.($page-1).'" class="strankovani-polozka">'.($page)."</a>");		
+				printf('<a href="/katalog/'.$subcat.'?stranka='.($page-1).$oc->getZobrazeniStr(true).'" class="strankovani-polozka">'.($page)."</a>");		
 			}
 			
 			// aktuální
 			printf('<span class="strankovani-polozka-akt">'.($page+1).'</span>');
 			
 			// po aktuálním
-			if ($page <= $countPages) {
-				printf('<a href="/katalog/'.$subcat.'?stranka='.($page+1).'" class="strankovani-polozka">'.($page+2)."</a>");		
-			}
 			if ($page+1 <= $countPages) {
-				printf('<a href="/katalog/'.$subcat.'?stranka='.($page+2).'" class="strankovani-polozka">'.($page+3)."</a>");		
+				printf('<a href="/katalog/'.$subcat.'?stranka='.($page+1).$oc->getZobrazeniStr(true).'" class="strankovani-polozka">'.($page+2)."</a>");		
+			}
+			if ($page+2 <= $countPages) {
+				printf('<a href="/katalog/'.$subcat.'?stranka='.($page+2).$oc->getZobrazeniStr(true).'" class="strankovani-polozka">'.($page+3)."</a>");		
 			}
 			
 			// další
-			if ($page <= $countPages) {
-				printf('<a href="/katalog/'.$subcat.'?stranka='.($page+1).'" class="strankovani-dalsi">Další</a>');		
+			if ($page+1 <= $countPages) {
+				printf('<a href="/katalog/'.$subcat.'?stranka='.($page+1).$oc->getZobrazeniStr(true).'" class="strankovani-dalsi">Další</a>');		
 			}	
 			
 			// Poslední
-			if ($page <= $countPages) {
-				printf('<a href="/katalog/'.$subcat.'?stranka='.($countPages-1).'" class="strankovani-posledni">Poslední</a>');		
+			if ($page+1 <= $countPages) {
+				printf('<a href="/katalog/'.$subcat.'?stranka='.($countPages).$oc->getZobrazeniStr(true).'" class="strankovani-posledni">Poslední</a>');		
 			}
 		}	
 	}
