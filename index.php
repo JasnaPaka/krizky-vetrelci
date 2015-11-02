@@ -16,7 +16,7 @@
 			Projekt Křížky a vetřelci mapuje drobné umění na území města Plzeň. Zaměřuje se jak na umění z doby normalizace,
 			tak na sakrální památky jako jsou křížky či kapličky. Bez povšimnutí však nezůstávají ani pomníky a pamětní desky.
 			Křížky a vetřelci jsou otevřeným projektem, do kterého se může zapojit každý. Víte o díle, které nám chybí v
-			katalogu? Nebo o něm něco víte? <a href="mailto:krizkyavetrelci@seznam.cz">Napište nám</a> nebo se 
+			katalogu? Nebo o něm něco víte? <a href="mailto:krizkyavetrelci@email.cz">Napište nám</a> nebo se 
 			<a href="https://www.facebook.com/groups/krizkyavetrelci/">zapojte na Facebooku</a>.
 		</p>
 		
