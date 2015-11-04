@@ -141,7 +141,7 @@
 			<?php if (is_user_logged_in() && current_user_can('edit_posts')) { ?>
 				<a class="buttonGreen" href="/wp-admin/admin.php?page=object&action=view&id=<?php printf($objekt->id) ?>">UPRAVIT</a>
 	        <?php } else { ?>
-	        	<a class="buttonGreen" href='mailto:krizkyavetrelci@email.cz?subject=<?php printf(addslashes($objekt->nazev)) ?>: Doplnění informací'>DOPLNIT INFORMACE</a>
+	        	<a class="buttonGreen" href='mailto:krizkyavetrelci@email.cz?subject=<?php printf(addslashes($objekt->nazev)) ?> (<?php print($objekt->id); ?>): Doplnění informací'>DOPLNIT INFORMACE</a>
 	        <?php } ?>
 	     </div>
 	     
