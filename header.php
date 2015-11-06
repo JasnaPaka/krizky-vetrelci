@@ -23,7 +23,8 @@
 	<link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url') ?>/content.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url') ?>/line_list_style.css" media="screen" />
 	<link rel='stylesheet' id='vpp-css'  href='<?php bloginfo('url') ?>/wp-content/themes/vpp/style.css?ver=4.0.1' type='text/css' media='all' />
-	<link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_url'); ?>" media="screen" />
+	<link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_url'); ?>" media="screen, print" />
+        <link rel="stylesheet"  type="text/css" href="<?php bloginfo('template_url') ?>-child-krizkyavetrelci/print.css" media="print" />
   
   <link href="//fonts.googleapis.com/css?family=Roboto:400,500,700&subset=latin,cyrillic-ext,latin-ext" rel="stylesheet" type="text/css">
 
