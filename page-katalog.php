@@ -16,14 +16,14 @@
 
 <div class="rightMenu">
 	<div id="viewdatabase">
-    	<a href="?zobrazeni=grid"><span id="vdgrid" class="<?php if (!$oc->getIsZobrazeniList()) printf("active"); ?>"></span></a>
-        <a href="?zobrazeni=list"><span id="vdlist" class="<?php if ($oc->getIsZobrazeniList()) printf("active"); ?>">"></span></a>
+        <a href="?zobrazeni=grid"><span id="vdgrid" class="<?php if (!$oc->getIsZobrazeniList()) { print("active"); } ?>"></span></a>
+        <a href="?zobrazeni=list"><span id="vdlist" class="<?php if ($oc->getIsZobrazeniList()) { print("active"); } ?>">"></span></a>
     </div>
     <div class="separator"></div>
 	<div id="searchdatabase">
-		<form method="post" action="/katalog/<?php printf($oc->getZobrazeniStr(false)) ?>">
+		<form method="post" action="/katalog/<?php print($oc->getZobrazeniStr(false)) ?>">
 	        <input name="typ" value="dilo" type="hidden">
-	        <input id="s" name="s" placeholder="Hledat v dílech..." type="text">
+	        <input id="s" name="s" placeholder="<?php print($KV["hledat_v_dilech"]) ?>" type="text">
 	        <input value="Hledat" type="submit">
 		</form>
 	</div>  
@@ -32,14 +32,14 @@
 
 <h2>
 	<?php if ($oc->getIsShowedTag()) { ?>
-		Díla se štítkem '<?php printf ($oc->getCurrentTag()->nazev) ?>'
+		<?php print($KV["dila_se_stitkem"]) ?> '<?php print ($oc->getCurrentTag()->nazev) ?>'
 	<?php } else if ($oc->getIsShowedCategory()) { ?>		
-		Kategorie děl '<?php printf ($oc->getCurrentCategory()->nazev) ?>'
+		<?php print($KV["katalog_del"]) ?> '<?php print ($oc->getCurrentCategory()->nazev) ?>'
 		<?php if ($oc->getIShowedBezAutora()) { ?>(bez autora)<?php } ?>
 	<?php } else if ($oc->getSearchValue() == null) { ?>
-		Katalog děl
+		<?php print($KV["katalog_del"]) ?>
 	<?php } else { ?>
-		Výsledek hledání v dílech pro "<?php printf($oc->getSearchValue()) ?>"
+		<?php print($KV["vysledek_hledani_dila"]) ?> '<?php print($oc->getSearchValue()) ?>'
 	<?php }?>
 </h2>
 
@@ -47,7 +47,7 @@
 	<div id="kat-tags">	
 <?php foreach ($oc->getAllTags() as $tag) { ?>
 
-<a href="/katalog/stitek/<?php printf ($tag->id) ?>/" class="kat-tag"><?php printf ($tag->nazev) ?></a>
+<a href="/katalog/stitek/<?php printf ($tag->id) ?>/" class="kat-tag"><?php print ($tag->nazev) ?></a>
 
 <?php } ?>
 	</div>
@@ -64,7 +64,7 @@
 
 <?php if (count($objekty) == 0) { ?>
 
-<p>Nebylo nalezeno žádné dílo.</p>
+<p><?php print($KV["dilo_nenalezeno"]) ?></p>
 
 <?php 
 
@@ -75,7 +75,7 @@
 		if (strlen(trim($popis)) > 0) {
 			printf("<p>%s</p>", $popis);
 		}
-		printf("<p>Počet děl se štítkem: %d</p><br />", sizeof($objekty));	
+		printf("<p>%s: %d</p><br />", $KV["dila_se_stitkem"], sizeof($objekty));	
 	}
 	
 	$objCount = 0;
@@ -89,18 +89,18 @@
 		}
 		
 		if (!$oc->getIsZobrazeniList()) {		
-			if ($objCount % 3 == 1) printf('<div>');
+                        if ($objCount % 3 == 1) { print('<div>'); };
 ?>
 
 <div class="post postitem">
-	<a href="/katalog/dilo/<?php printf($objekt->id) ?>/" title="Zobrazení informací o díle">
-		<img src="<?php printf($img) ?>" alt="Ukázka díla" class="katalog-dilo-obr" />
+	<a href="/katalog/dilo/<?php print($objekt->id) ?>/" title="<?php print ($KV["zobrazeni_informaci"]) ?>">
+		<img src="<?php print($img) ?>" alt="Ukázka díla" class="katalog-dilo-obr" />
 	</a>
 	
 	<div class="padding">
-		<h3><a href="/katalog/dilo/<?php printf($objekt->id) ?>/" title="Zobrazení informací o díle"><?php printf($objekt->nazev) ?></a></h3>
+		<h3><a href="/katalog/dilo/<?php printf($objekt->id) ?>/" title="<?php print ($KV["zobrazeni_informaci"]) ?>"><?php printf($objekt->nazev) ?></a></h3>
 		<p><span class="post-label">Kategorie:</span> 
-			<a href="/katalog/kategorie/<?php printf($objekt->kategorie) ?>/" title="Zobrazení děl v kategorii"><?php printf($objekt->katnazev) ?></a></p>
+			<a href="/katalog/kategorie/<?php printf($objekt->kategorie) ?>/" title="<?php print ($KV["zobrazeni_informaci"]) ?>"><?php printf($objekt->katnazev) ?></a></p>
 		<p><span class="post-label"><?php if (count($objekt->autori) > 1) { printf("Autoři"); } else { printf("Autor"); } ?>:</span>
 			<?php if (count($objekt->autori) == 0) { ?>
 				nejsou známi

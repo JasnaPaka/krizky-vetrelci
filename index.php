@@ -1,4 +1,8 @@
-<?php get_header(); ?>
+<?php 
+    get_header(); 
+
+    $uploadDir = wp_upload_dir();
+?>
 
   <div id="page" class="index bleft titulni">
 
@@ -9,15 +13,9 @@
 	    <div class="padding">
 		<h2>O projektu</h2>     
 
-   	
-    
 		<p id="o-projektu">
-			<img src="<?php bloginfo('template_url'); ?>-child-krizkyavetrelci/images/medvedi-nahled.jpg" alt="Medvědi" id="o-projektu-logo" /> 
-			Projekt Křížky a vetřelci mapuje drobné umění na území města Plzeň. Zaměřuje se jak na umění z doby normalizace,
-			tak na sakrální památky jako jsou křížky či kapličky. Bez povšimnutí však nezůstávají ani pomníky a pamětní desky.
-			Křížky a vetřelci jsou otevřeným projektem, do kterého se může zapojit každý. Víte o díle, které nám chybí v
-			katalogu? Nebo o něm něco víte? <a href="mailto:krizkyavetrelci@email.cz">Napište nám</a> nebo se 
-			<a href="https://www.facebook.com/groups/krizkyavetrelci/">zapojte na Facebooku</a>.
+                    <img src="<?php bloginfo('template_url'); ?>-child-krizkyavetrelci/images/o-projektu-obr.jpg" alt="Obrázek k projektu" id="o-projektu-logo" /> 
+                    <?php print ($KV["projekt_info"]); ?>
 		</p>
 		
 		<div id="o-projektu-button">
@@ -92,7 +90,7 @@
 		<h2>Mapa</h2>
 		
 		<p id="titulka-mapa">
-		Aktuálně je zmapováno umístění <strong><?php echo kv_ObjektPocet() ?> děl</strong>.
+		Aktuálně je zmapováno umístění <strong><?php echo kv_ObjektPocet() ?> <?php print (getObjectPluralStr(kv_ObjektPocet())) ?></strong>.
 		</p>
 		
 		<p id="titulka-mapa-img"><a href="/mapa/" title="Přejít na mapu">
@@ -110,10 +108,9 @@
 	
       <div id="actualprojects" class="contentheight">
 
-        <h2>Náhodná díla</h2>
+        <h2><?php print($KV["nahodne_dilo"]) ?></h2>
 
 		<?php 
-			$uploadDir = wp_upload_dir();
 			$objects = array();
 			$searches = 1;
 			
@@ -145,10 +142,10 @@
 				
 				if ($obj->img_512 != null) {
 					echo '<a href="/katalog/dilo/'.$obj->id.'/">
-						<img src="'.$uploadDir['baseurl'].$obj->img_512.'" alt="Ukázka díla" id="titulka-random-img" /></a>';				
+						<img src="'.$uploadDir['baseurl'].$obj->img_512.'" alt="'.$KV["ukazka_dila"].'" id="titulka-random-img" /></a>';				
 				} else {
 					echo '<a href="/katalog/dilo/'.$obj->id.'/">
-						<img src="'.get_template_directory_uri().'-child-krizkyavetrelci/images/foto-neni-512.png" alt="Ukázka díla" id="titulka-random-img" /></a>';	
+						<img src="'.get_template_directory_uri().'-child-krizkyavetrelci/images/foto-neni-512.png" alt="'.$KV["ukazka_dila"].'" id="titulka-random-img" /></a>';	
 				}
 				
 				echo "<br /><br />";
@@ -156,20 +153,19 @@
 		?>
 		
 		<br /><br /><br /><br />
-		<h2>Poslední přidané</h2>
+		<h2><?php print($KV["posledni_pridane"]) ?></h2>
 		
 		<?php
-			$uploadDir = wp_upload_dir();
 			$obj = kv_last_object();
 			
 			echo '<a href="/katalog/dilo/'.$obj->id.'/"><h3>'.$obj->nazev.'</h3></a>';
 			
 			if ($obj->img_512 != null) {
 				echo '<a href="/katalog/dilo/'.$obj->id.'/">
-					<img src="'.$uploadDir['baseurl'].$obj->img_512.'" alt="Ukázka díla" id="titulka-random-img" /></a>';				
+					<img src="'.$uploadDir['baseurl'].$obj->img_512.'" alt="'.$KV["ukazka_dila"].'" id="titulka-random-img" /></a>';				
 			} else {
 				echo '<a href="/katalog/dilo/'.$obj->id.'/">
-					<img src="'.get_template_directory_uri().'-child-krizkyavetrelci/images/foto-neni-512.png" alt="Ukázka díla" id="titulka-random-img" /></a>';	
+					<img src="'.get_template_directory_uri().'-child-krizkyavetrelci/images/foto-neni-512.png" alt="'.$KV["ukazka_dila"].'" id="titulka-random-img" /></a>';	
 			}			
 		?>
 
@@ -179,4 +175,5 @@
   </div> 
 
 
-<?php get_footer(); ?>
+<?php 
+    get_footer();
