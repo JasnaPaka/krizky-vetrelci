@@ -64,7 +64,7 @@
 				document.getElementById(categoryId).setAttribute("data-checked", "");
 	    	}
 		
-			if (checkAll && markers[i].minZoom <= zoom) {
+			if (checkAll) {
 				markers[i].setMap(map);
 			} else {
 				markers[i].setMap(null);
@@ -91,7 +91,7 @@
 		
   		for (i=0; i<markers.length; i++) {
   			var checked = categoryIsChecked(markers[i].category);
-			if (checked && markers[i].minZoom <= zoom && !bodyVMape[i][9]) {
+			if (checked && !bodyVMape[i][9]) {
 				markers[i].setMap(map);
 			} else {
 				markers[i].setMap(null);
@@ -122,7 +122,6 @@
 			    title: bodyVMape[i][5]
 			});
 			marker.category = bodyVMape[i][3];
-			marker.minZoom = bodyVMape[i][8];
 			
 			google.maps.event.addListener(marker, 'click', (function(marker, i) {
 	            return function() {
@@ -182,7 +181,7 @@
 		
 		for (i=0; i<markers.length; i++) {
 			if (markers[i].category == id) {
-				if (checked && markers[i].minZoom <= zoom) {
+				if (checked) {
 					markers[i].setMap(map);
 				} else {
 					markers[i].setMap(null);
