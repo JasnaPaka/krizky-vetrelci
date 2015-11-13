@@ -245,7 +245,7 @@
 		
 		<div class="blocks">
 			<div class="block active">
-				<h2>Křížky a vetřelci</h2>
+				<h2><?php print ($KV["projekt_nazev"]) ?></h2>
 				
 				<div class="scroll">
 					<div class="tags">

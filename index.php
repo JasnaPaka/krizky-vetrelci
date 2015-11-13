@@ -2,6 +2,7 @@
     get_header(); 
 
     $uploadDir = wp_upload_dir();
+    $PAGE["pocet_del"] = kv_ObjektPocet();
 ?>
 
   <div id="page" class="index bleft titulni">
@@ -90,7 +91,7 @@
 		<h2>Mapa</h2>
 		
 		<p id="titulka-mapa">
-		Aktuálně je zmapováno umístění <strong><?php echo kv_ObjektPocet() ?> <?php print (getObjectPluralStr(kv_ObjektPocet())) ?></strong>.
+		Aktuálně je zmapováno umístění <strong><?php echo $PAGE["pocet_del"] ?> <?php print (getObjectPluralStr(kv_ObjektPocet())) ?></strong>.
 		</p>
 		
 		<p id="titulka-mapa-img"><a href="/mapa/" title="Přejít na mapu">
@@ -111,6 +112,9 @@
         <h2><?php print($KV["nahodne_dilo"]) ?></h2>
 
 		<?php 
+                    if ($PAGE["pocet_del"] == 0) {
+                        print ($KV["zadne_dilo"]);
+                    } else {
 			$objects = array();
 			$searches = 1;
 			
@@ -150,6 +154,7 @@
 				
 				echo "<br /><br />";
 			}
+                    }
 		?>
 		
 		<br /><br /><br /><br />
@@ -157,16 +162,19 @@
 		
 		<?php
 			$obj = kv_last_object();
-			
-			echo '<a href="/katalog/dilo/'.$obj->id.'/"><h3>'.$obj->nazev.'</h3></a>';
-			
-			if ($obj->img_512 != null) {
-				echo '<a href="/katalog/dilo/'.$obj->id.'/">
-					<img src="'.$uploadDir['baseurl'].$obj->img_512.'" alt="'.$KV["ukazka_dila"].'" id="titulka-random-img" /></a>';				
-			} else {
-				echo '<a href="/katalog/dilo/'.$obj->id.'/">
-					<img src="'.get_template_directory_uri().'-child-krizkyavetrelci/images/foto-neni-512.png" alt="'.$KV["ukazka_dila"].'" id="titulka-random-img" /></a>';	
-			}			
+                        if ($obj == null) {
+                            print ($KV["zadne_dilo"]);
+                        } else {
+                            echo '<a href="/katalog/dilo/'.$obj->id.'/"><h3>'.$obj->nazev.'</h3></a>';
+
+                            if ($obj->img_512 != null) {
+                                    echo '<a href="/katalog/dilo/'.$obj->id.'/">
+                                            <img src="'.$uploadDir['baseurl'].$obj->img_512.'" alt="'.$KV["ukazka_dila"].'" id="titulka-random-img" /></a>';				
+                            } else {
+                                    echo '<a href="/katalog/dilo/'.$obj->id.'/">
+                                            <img src="'.get_template_directory_uri().'-child-krizkyavetrelci/images/foto-neni-512.png" alt="'.$KV["ukazka_dila"].'" id="titulka-random-img" /></a>';	
+                            }			
+                        }
 		?>
 
       </div>      
