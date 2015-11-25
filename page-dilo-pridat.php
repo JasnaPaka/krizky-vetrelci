@@ -45,9 +45,7 @@ volnou licencí <a href="http://creativecommons.org/licenses/by-sa/4.0/">Creativ
 
 <div class="row">
 	<label>Fotografie:</label>
-	<input type="file" id="photo1" name="photo1" /><br />
-	<input type="file" id="photo2" name="photo2" /><br />
-	<input type="file" id="photo3" name="photo3" />
+	<input type="file" id="photo" name="photo[]" multiple="multiple" /><br />
 	<p class="gray">Volitelně vložte fotografie díla. </p>
 </div>
 
