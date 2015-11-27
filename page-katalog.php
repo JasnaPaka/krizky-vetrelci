@@ -99,24 +99,7 @@
 	
 	<div class="padding">
 		<h3><a href="/katalog/dilo/<?php printf($objekt->id) ?>/" title="<?php print ($KV["zobrazeni_informaci"]) ?>"><?php printf($objekt->nazev) ?></a></h3>
-		<p><span class="post-label">Kategorie:</span> 
-			<a href="/katalog/kategorie/<?php printf($objekt->kategorie) ?>/" title="<?php print ($KV["zobrazeni_informaci"]) ?>"><?php printf($objekt->katnazev) ?></a></p>
-		<p><span class="post-label"><?php if (count($objekt->autori) > 1) { printf("Autoři"); } else { printf("Autor"); } ?>:</span>
-			<?php if (count($objekt->autori) == 0) { ?>
-				nejsou známi
-			<?php } else {
-				$isFirst = true; 
-				foreach ($objekt->autori as $autor) {
-					if (!$isFirst) {
-						printf(", ");	
-					}
-					
-					printf('<a href="/katalog/autor/'.$autor->id.'/">'.trim($autor->titul_pred." ".$autor->jmeno." ".$autor->prijmeni." ".$autor->titul_za)."</a>");
-					
-					$isFirst = false;
-				}
-			} ?>
-		</a>
+		<?php include "page-katalog-dilo-grid.php" ?>
 	</div>
 </div>
 
@@ -152,24 +135,9 @@
 
                     <p><a href="/katalog/kategorie/<?php printf ($objekt->kategorie)?>/" 
                     	title="Zobrazí seznam děl v kategorii"><?php printf ($objekt->katnazev)?></a></p>
-
-                    <h4><?php if (count($objekt->autori) > 1) { printf("Autoři"); } else { printf("Autor"); } ?>:</h4>
-
-                    <p><?php if (count($objekt->autori) == 0) { ?>
-						nejsou známi
-					<?php } else {
-						$isFirst = true; 
-						foreach ($objekt->autori as $autor) {
-							if (!$isFirst) {
-								printf(", ");	
-							}
-							
-							printf('<a href="/katalog/autor/'.$autor->id.'/">'.trim($autor->titul_pred." ".$autor->jmeno." ".$autor->prijmeni." ".$autor->titul_za)."</a>");
-							
-							$isFirst = false;
-						}
-					} ?>
-                    </p>
+                    
+                    <?php include "page-katalog-dilo-list.php" ?>
+                   
 
                   </div>
 

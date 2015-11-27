@@ -21,6 +21,10 @@ function getObjectPluralStr($count) {
     return $KV["dilo"][3];
 }
 
+function getCountRandomObjects() {
+    return 3;
+}
+
 // řetězce
 
 $KV["projekt_nazev"] = "Křížky a vetřelci";
