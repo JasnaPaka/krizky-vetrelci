@@ -3,6 +3,7 @@
 	$objekt = kv_object_info();
 	$uploadDir = wp_upload_dir();
 	$oc = kv_object_controller();
+        $pois = $oc->getPoisForObject();
 	
 	$kategorie = $objekt->kategorie;
 	$autori = $objekt->autori;
@@ -155,6 +156,28 @@
 			 	</div>
 			 <?php } ?>
 		 </div>
+                 
+                <?php if (sizeof($pois) > 0) { ?>
+		
+                 <div id="body">
+                    <hr />
+                    <h3>Související místa</h3>
+                    
+                    <p><ul>
+                        <?php 
+                        foreach ($pois as $poi) {
+                            print ("<li>");
+                            printf ('<a href="https://maps.google.cz/maps?q=%s,%s">%s</a>', $poi->latitude, $poi->longitude, $poi->nazev);
+                            if (strlen($poi->popis) > 2) {
+                                print (' &ndash; '.$poi->popis);
+                            }
+                            print ("</li>");
+                        }
+                        ?>
+                    </ul></p>
+                 </div>
+                
+                <?php } ?>
 		 
 		 <?php if ($objekt->zpracovano && count($zdroje) > 0) { ?>
 		 
