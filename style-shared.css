@@ -410,7 +410,8 @@ a:hover.strankovani-polozka {
 }
 
 #page.author #zdroje ul,
-#page.podnet #body ul{
+#page.podnet #zdroje ul,
+#page.podnet #body ul {
 	list-style-type: disc;
 	margin-left: 15px;
 	font-size: 15px;
@@ -418,7 +419,7 @@ a:hover.strankovani-polozka {
 } 
 
 #page.author #zdroje li,
-#page.podnet #zdroje li{
+#page.podnet #zdroje li {
 	margin-top: 3px;
 }
 
