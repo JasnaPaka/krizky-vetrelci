@@ -772,3 +772,10 @@ a:hover.strankovani-polozka {
     height: 52px;
 }
 
+.map-question-icon {
+   opacity: 0.6;
+}
+
+.map-question-icon:hover {
+   opacity: 1;
+}

@@ -265,7 +265,15 @@
 								class="tag filter allfilter<?php if (strlen($category->zaskrtnuto) > 0) echo ' '.$category->zaskrtnuto ?>"
 								data-checked="<?php echo $category->zaskrtnuto ?>" 
 								title="Počet děl: <?php echo $category->pocet ?>" onclick="visibilityChange(<?php echo $category->id ?>)">
-							<?php echo $category->nazev ?><span class="checkbox"></span></label>
+                                                            
+							<?php 
+                                                            echo $category->nazev;
+                                                            if (strlen($category->popis) > 2) {
+                                                        ?>
+                                                            <img src="<?php bloginfo('template_url') ?>-child-krizkyavetrelci/images/question-icon.png" 
+                                                                    title="<?php print ($category->popis) ?>" class="map-question-icon" />            
+                                                            <?php } ?>
+                                                            <span class="checkbox"></span></label>
 						<?php
 							}
 						?>
@@ -278,11 +286,11 @@
 						
 						<label id="categoryNeexistujici" name="categoryNeexistujici" class="tag filter allfilter" 
 							title="Počet děl: " onclick="visibilityChangeNeexistujici(true)">
-						Již neexistující<span class="checkbox"></span></label>
+						Již neexistující díla<span class="checkbox"></span></label>
 						
 						<label id="categoryBezFotografie" name="categoryBezFotografie" class="tag filter allfilter" 
 							title="Počet děl: " onclick="visibilityChangeBezFotografie(true)">
-						Bez fotografie<span class="checkbox"></span></label>					
+						Díla bez fotografie<span class="checkbox"></span></label>					
 					</div>
 					
 					<hr />
