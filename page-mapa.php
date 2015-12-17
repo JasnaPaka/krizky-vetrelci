@@ -159,6 +159,13 @@
 		  	visibilityChangeBezFotografie(false);
 		});
 		changeZoom();
+                
+                // skrýt seznam kategorií?
+                var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+                if (w <= 640) {
+                    jQuery('#mappage #filters .panel, #mappage #load_panel .panel').slideToggle();
+                    jQuery('#map-toggle').toggleClass('minimized');
+                }
 	}
 	
 	function categoryIsChecked(id) {
@@ -242,7 +249,7 @@
 
 <div id="filters">
 	<div class="buttons">
-		<span href="#" class="minimize"></span>
+		<span href="#" class="minimize" id="map-toggle"></span>
 	</div>
 	<div class="panel">
 		
