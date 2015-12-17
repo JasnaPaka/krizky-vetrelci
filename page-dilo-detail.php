@@ -1,31 +1,31 @@
 <?php 
-	get_header();
-	$objekt = kv_object_info();
-	$uploadDir = wp_upload_dir();
-	$oc = kv_object_controller();
-        $pois = $oc->getPoisForObject();
-	
-	$kategorie = $objekt->kategorie;
-	$autori = $objekt->autori;
-	$zdroje = $objekt->zdroje;
-	$fotografiePrim = $objekt->fotografiePrim;
-	$fotografieOst = $objekt->fotografieNotPrim;
+    get_header();
+    $objekt = kv_object_info();
+    $uploadDir = wp_upload_dir();
+    $oc = kv_object_controller();
+    $pois = $oc->getPoisForObject();
+
+    $kategorie = $objekt->kategorie;
+    $autori = $objekt->autori;
+    $zdroje = $objekt->zdroje;
+    $fotografiePrim = $objekt->fotografiePrim;
+    $fotografieOst = $objekt->fotografieNotPrim;
 ?>
 
 <?php if (!isset($objekt->nazev) || $objekt->deleted) { ?>
 	
-	<div id="page" class="static">
-	
-	  <div class="inner">
-	
-	    <div class="padding">
-	
-			<h2>Dílo nebylo nalezeno</h2>
-			
-			<p>Vámi hledané dílo nebylo bohužel v katalogu nalezeno.</p>
-		</div>
-	   </div>
-	</div>	
+    <div id="page" class="static">
+
+      <div class="inner">
+
+        <div class="padding">
+
+            <h2>Dílo nebylo nalezeno</h2>
+
+            <p>Vámi hledané dílo nebylo bohužel v katalogu nalezeno.</p>
+        </div>
+       </div>
+    </div>	
 	
 <?php } else { ?>
 

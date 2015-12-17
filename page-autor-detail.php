@@ -1,26 +1,26 @@
 <?php 
-	get_header();
-	$uploadDir = wp_upload_dir();
-	
-	$autor = kv_author_info();
-	$objekty = kv_author_objects();
-	$zdroje = kv_author_sources();
+    get_header();
+    $uploadDir = wp_upload_dir();
+
+    $autor = kv_author_info();
+    $objekty = kv_author_objects();
+    $zdroje = kv_author_sources();
 ?>
 
 <?php if (!isset($autor->id) || $autor->deleted) { ?>
 	
-	<div id="page" class="static">
-	
-	  <div class="inner">
-	
-	    <div class="padding">
-	
-			<h2>Autor nebyl nalezen</h2>
-			
-			<p>Vámi hledaný autor nebyl bohužel v katalogu nalezen.</p>
-		</div>
-	   </div>
-	</div>	
+    <div id="page" class="static">
+
+      <div class="inner">
+
+        <div class="padding">
+
+            <h2>Autor nebyl nalezen</h2>
+
+            <p>Vámi hledaný autor nebyl bohužel v katalogu nalezen.</p>
+        </div>
+       </div>
+    </div>	
 	
 <?php } else { ?>
 
@@ -34,40 +34,40 @@
 	</div>
 
 	<div class="topMenu">
-		<div>
-			<h1>Narozen(a)</h1>
-			<h2>
-				<?php if ($autor->datum_narozeni == null) {
-					printf('<em class="neevidovano">(neuvedeno)</em>');
-				} else {
-					echo date("j. n. Y", strtotime($autor->datum_narozeni));	
-				} ?>
-			</h2>
-		</div>
-		<?php if ($autor->datum_umrti != null) { ?>
-			<div>
-				<h1>Zemřel(a)</h1>
-				<h2>
-					<?php
-						echo date("j. n. Y", strtotime($autor->datum_umrti));	
-					?>
-				</h2>
-			</div>
-		<?php } ?>
-		<?php if ($autor->web != null) { ?>
-			<div>
-				<h1>Web</h1>
-				<h2>
-					<?php
-						$caption = $autor->web;
-						if (strlen($autor->web) > 40) {
-							$caption = substr($autor->web, 0, 40)."...";
-						}						
-						printf ('<a href="%s">%s</a>', $autor->web, $caption);
-					?>
-				</h2>
-			</div>
-		<?php } ?>
+            <div>
+                <h1>Narozen(a)</h1>
+                <h2>
+                    <?php if ($autor->datum_narozeni == null) {
+                            printf('<em class="neevidovano">(neuvedeno)</em>');
+                    } else {
+                            echo date("j. n. Y", strtotime($autor->datum_narozeni));	
+                    } ?>
+                </h2>
+            </div>
+            <?php if ($autor->datum_umrti != null) { ?>
+                <div>
+                    <h1>Zemřel(a)</h1>
+                    <h2>
+                            <?php
+                                    echo date("j. n. Y", strtotime($autor->datum_umrti));	
+                            ?>
+                    </h2>
+                </div>
+            <?php } ?>
+            <?php if ($autor->web != null) { ?>
+                <div>
+                    <h1>Web</h1>
+                    <h2>
+                        <?php
+                            $caption = $autor->web;
+                            if (strlen($autor->web) > 40) {
+                                    $caption = substr($autor->web, 0, 40)."...";
+                            }						
+                            printf ('<a href="%s">%s</a>', $autor->web, $caption);
+                        ?>
+                    </h2>
+                </div>
+            <?php } ?>
 	</div>
 	
 
