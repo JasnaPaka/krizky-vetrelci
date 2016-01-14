@@ -105,7 +105,7 @@
  
  </div>
  
- <?php if ($autor->zpracovano && count($zdroje) > 0) { ?>
+ <?php if (count($zdroje) > 0) { ?>
  
  <div id="zdroje">
  	<hr />
