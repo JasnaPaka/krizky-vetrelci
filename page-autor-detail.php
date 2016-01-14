@@ -80,7 +80,11 @@
     
 <?php if (count($objekty) == 0) { ?>
 
+<div id="dila"> 
+<hr />
+<h3>Přehled děl</h3>
 <p>Nebylo nalezeno žádné dílo.</p>
+</div>
 
 <?php 
 
