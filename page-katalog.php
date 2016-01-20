@@ -56,11 +56,7 @@
 
 </div>
 
-</div>
-
 <hr />
-
-<div class="inner">
 
 <?php if (count($objekty) == 0) { ?>
 
@@ -89,7 +85,7 @@
 		}
 		
 		if (!$oc->getIsZobrazeniList()) {		
-                        if ($objCount % 3 == 1) { print('<div>'); };
+                       // if ($objCount % 3 == 1) { print('<div>'); };
 ?>
 
 <div class="post postitem">
@@ -104,7 +100,7 @@
 </div>
 
 <?php
-			if ($objCount % 3 == 0) printf('</div>');			
+			//if ($objCount % 3 == 0) printf('</div>');			
 		} // konec zobrazení "grid" 
 		else {
 			

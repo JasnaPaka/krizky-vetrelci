@@ -264,9 +264,12 @@
 
 #page.katalog .post, #page.news .post {
     position: relative;
+    display: inline-block;
     float: left;
-    width: 340px;
-    margin: 0px;
+    width: 335px;
+    vertical-align: top;    
+    line-height: 0;
+    margin-bottom: 10px;
 }
 
 #page.katalog .post .padding {
