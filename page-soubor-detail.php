@@ -66,7 +66,7 @@
 	foreach ($objekty as $objekt) {
 		$objCount++;
 		
-		if ($objekt->img_512 != null) {
+		if ($objekt->img_512 != null && $objekt->skryta == 0) {
 			$img = $uploadDir['baseurl'].$objekt->img_512;
 		} else {
 			$img = get_template_directory_uri()."-child-krizkyavetrelci/images/foto-neni-340.png";
