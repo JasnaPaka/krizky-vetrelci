@@ -71,6 +71,9 @@
 			<?php
 			if (strlen($objekt->mestska_cast) > 2) {
 				print($objekt->mestska_cast);
+				if (strlen($objekt->oblast) > 2 && strpos ($objekt->mestska_cast, $objekt->oblast) === FALSE) {
+					print (", ".$objekt->oblast);
+				}
 			} else {
 				print('<em class="neevidovano">(není uvedeno)</em>');
 			}
