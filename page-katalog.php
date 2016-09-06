@@ -43,11 +43,13 @@
 	<?php }?>
 </h2>
 
-<?php if ($page == 0 && count($oc->getAllTags()) > 0 && !$oc->getIsShowedCategory()) { ?>	
+<?php if ($page == 0 && count($oc->getAllTagsForWeb()) > 0 && !$oc->getIsShowedCategory()) { ?>
 	<div id="kat-tags">	
-<?php foreach ($oc->getAllTags() as $tag) { ?>
+<?php foreach ($oc->getAllTagsForWeb() as $tag) { ?>
 
-<a href="/katalog/stitek/<?php printf ($tag->id) ?>/" class="kat-tag"><?php print ($tag->nazev) ?></a>
+
+<a href="/katalog/stitek/<?php print ($tag->id) ?>/" class="kat-tag2"
+	style="background-color:<?php strlen($tag->barva) > 0 ? print ($tag->barva) : print('#85a92b') ?>"><?php print ($tag->nazev) ?></a>
 
 <?php } ?>
 	</div>
@@ -71,7 +73,7 @@
 		if (strlen(trim($popis)) > 0) {
 			printf("<p>%s</p>", $popis);
 		}
-		printf("<p>%s: %d</p><br />", $KV["dila_se_stitkem"], sizeof($objekty));	
+		printf("<p>%s: %d</p><br />", $KV["pocet_del_se_stitkem"], sizeof($objekty));
 	}
 	
 	$objCount = 0;

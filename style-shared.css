@@ -789,3 +789,13 @@ a:hover.strankovani-polozka {
 #stahnout-gpx th {
     text-align: left;
 }
+
+.kat-tag2 {
+    color: white;
+    padding: 5px;
+    margin-right: 3px;
+    line-height: 230%;
+    border-radius: 8px;
+    white-space: nowrap;
+    background-color: #85a92b;
+}

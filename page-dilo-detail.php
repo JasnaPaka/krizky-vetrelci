@@ -38,7 +38,7 @@
     	<?php if (count($oc->getTagsForObject($objekt->id)) > 0) { ?>	
       	<div id="searchdatabase">
 			<?php foreach ($oc->getTagsForObject($objekt->id) as $tag) { ?>
-			<a href="/katalog/stitek/<?php printf ($tag->id) ?>/" class="kat-tag"><?php printf ($tag->nazev) ?></a>
+			<a href="/katalog/stitek/<?php printf ($tag->id) ?>/" class="kat-tag2"><?php printf ($tag->nazev) ?></a>
 			<?php } ?>
 	    </div>
 	    <?php } ?>
