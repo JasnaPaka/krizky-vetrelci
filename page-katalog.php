@@ -96,7 +96,12 @@
 	</a>
 	
 	<div class="padding">
-		<h3><a href="/katalog/dilo/<?php printf($objekt->id) ?>/" title="<?php print ($KV["zobrazeni_informaci"]) ?>"><?php printf($objekt->nazev) ?></a></h3>
+		<h3><a href="/katalog/dilo/<?php printf($objekt->id) ?>/"
+			   title="<?php print ($KV["zobrazeni_informaci"]) ?>"><?php printf($objekt->nazev) ?></a>
+			<?php if ($objekt->zruseno) { ?>
+				<span class="katalog-dilo-zruseno">Odstraněno</span>
+			<?php } ?>
+		</h3>
 		<?php include "page-katalog-dilo-grid.php" ?>
 	</div>
 </div>

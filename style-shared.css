@@ -799,3 +799,11 @@ a:hover.strankovani-polozka {
     white-space: nowrap;
     background-color: #85a92b;
 }
+
+.katalog-dilo-zruseno {
+    background-color: orange;
+    color: black;
+    font-size: 13px;
+    padding: 5px;
+    border-radius: 8px;
+}
