@@ -145,12 +145,12 @@
 		 
 		 	<?php if ($objekt->zpracovano) { ?>
 			 	<div id="obsah-perex">
-			 		<?php printf(stripslashes($objekt->popis)) ?>
+			 		<?php print(stripslashes($objekt->popis)) ?>
 			 	</div>
 			 	<div id="obsah">
 			 		<?php
 			 			if ($objekt->zpracovano) { 
-			 				printf(stripslashes($objekt->obsah));
+			 				print(stripslashes($objekt->obsah));
 						}
 			 		?>
 			 	</div>
@@ -190,7 +190,7 @@
 		 			printf("<li>"); 
 					
 		 			if (strlen($zdroj->url) > 0) {
-		 				printf('<a href="'.$zdroj->url.'">'.$zdroj->nazev.'</a>');	
+		 				print('<a href="'.$zdroj->url.'">'.$zdroj->nazev.'</a>');
 					} else {
 						printf($zdroj->nazev);	
 					}
