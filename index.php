@@ -4,6 +4,7 @@
     $uploadDir = wp_upload_dir();
     $PAGE["pocet_del"] = kv_ObjektPocet();
     $PAGE["pocet_kategorii"] = kv_category_count();
+	$KV_SETTINGS = kv_settings2();
 ?>
 
   <div id="page" class="index bleft titulni">
@@ -19,6 +20,12 @@
                     <img src="<?php bloginfo('template_url'); ?>-child-krizkyavetrelci/images/o-projektu-obr.jpg" alt="Obrázek k projektu" id="o-projektu-logo" /> 
                     <?php print ($KV["projekt_info"]); ?>
 		</p>
+
+		<?php
+			if (strlen($KV_SETTINGS["hledame"]) > 5) {
+				printf ('<p id="vyzva">%s</p>', $KV_SETTINGS["hledame"]);
+			}
+		?>
 		
 		<div id="o-projektu-button">
 			<a href="/o-projektu/" class="button">Více o projektu</a>
