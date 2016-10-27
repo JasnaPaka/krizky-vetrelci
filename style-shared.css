@@ -153,7 +153,7 @@
     line-height: 1.2;
 }
 
-#obsah p, #zdroje p, .pridat-dilo p {
+#obsah p, #zdroje p, #soubory p, .pridat-dilo p {
     margin: 8px 0 8px 0;
     font-size: 15px;
     line-height: 1.3;
@@ -171,17 +171,18 @@
     column-gap: 40px;
 }
 
-#zdroje, #body {
+#zdroje, #soubory, #body {
     margin: 0 0 20px 0;
 }
 
-#zdroje h3, #dila h3, #body h3 {
+#zdroje h3, #soubory h3, #dila h3, #body h3 {
     font-size: 20px;
     color: #85a92b;
     margin: 8px 0 12px 0;
 }
 
 #zdroje hr,
+#soubory hr,
 #body hr {
     border-width: 1px 0px 0px;
     border-style: solid none none;
@@ -189,6 +190,7 @@
 }
 
 #zdroje a,
+#soubory a,
 #body a {
     color: #000;
     text-decoration: underline;
@@ -400,6 +402,10 @@ a:hover.strankovani-polozka {
 }
 
 #page.author a {
+     color: #85a92b;
+ }
+
+#page.katalog p a {
     color: #85a92b;
 }
 

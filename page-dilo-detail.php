@@ -35,7 +35,7 @@
 
     <div class="padding">
     
-    	<?php var_dump($oc->getTagsForObject($objekt->id)); if (count($oc->getTagsForObject($objekt->id)) > 0) { ?>
+    	<?php if (count($oc->getTagsForObject($objekt->id)) > 0) { ?>
       	<div id="searchdatabase">
 			<?php foreach ($oc->getTagsForObject($objekt->id) as $tag) { ?>
 			<a href="/katalog/stitek/<?php printf ($tag->id) ?>/" class="kat-tag2"><?php printf ($tag->nazev) ?></a>
@@ -156,6 +156,25 @@
 			 	</div>
 			 <?php } ?>
 		 </div>
+
+		<?php if (sizeof ($oc->getCollectionsForObject()) > 0) { ?>
+			<div id="soubory">
+				<hr />
+				<h3>Soubory děl</h3>
+				<p>Dílo je součástí následujících souborů děl:
+				<?php
+					$prvni = true;
+					foreach ($oc->getCollectionsForObject() as $collection) {
+						if (!$prvni) {
+							print (", ");
+						}
+						printf ('<a href="/soubor/%d/">%s</a>', $collection->id, $collection->nazev);
+						$prvni = false;
+					}
+				?>
+				</p>
+			</div>
+		<?php } ?>
                  
                 <?php if (sizeof($pois) > 0) { ?>
 		

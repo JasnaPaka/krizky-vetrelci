@@ -73,7 +73,8 @@
 		if (strlen(trim($popis)) > 0) {
 			printf("<p>%s</p>", $popis);
 		}
-		printf("<p>%s: %d</p><br />", $KV["pocet_del_se_stitkem"], sizeof($objekty));
+		printf('<p>%s: %d | <a href="/stahnout/stitek/%d/">Stáhnout do GPX</a> (<a href="/stahnout/stitek/%d/?filtr=existujici">pouze existující</a>)</p><br />',
+			$KV["pocet_del_se_stitkem"], sizeof($objekty), $oc->getCurrentTag()->id, $oc->getCurrentTag()->id);
 	}
 	
 	$objCount = 0;
