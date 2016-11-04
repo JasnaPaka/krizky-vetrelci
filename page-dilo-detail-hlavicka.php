@@ -39,13 +39,13 @@
 			?>
 		</h2>
 		<div class="space"></div>
-		<h1>Přístupnost</h1>
+		<h1>Materiál</h1>
 		<h2>
 			<?php
-			if (strlen($objekt->pristupnost) > 2) {
-				printf($objekt->pristupnost);
+			if (strlen($objekt->material) > 2) {
+				printf($objekt->material);
 			} else {
-				printf('<em class="neevidovano">(není uvedena)</em>');
+				printf('<em class="neevidovano">(není uveden)</em>');
 			}
 			?>
 		</h2>
@@ -66,6 +66,29 @@
 			?>
 		</h2>
 		<div class="space"></div>
+		<h1>Adresa</h1>
+		<h2>
+			<?php
+			if (strlen($objekt->adresa) > 2) {
+				print($objekt->adresa);
+			} else {
+				print('<em class="neevidovano">(není uvedena)</em>');
+			}
+			?>
+		</h2>
+	</div>
+	<div>
+		<h1>Přístupnost</h1>
+		<h2>
+			<?php
+			if (strlen($objekt->pristupnost) > 2) {
+				printf($objekt->pristupnost);
+			} else {
+				printf('<em class="neevidovano">(není uvedena)</em>');
+			}
+			?>
+		</h2>
+		<div class="space"></div>
 		<h1>Městský obvod</h1>
 		<h2>
 			<?php
@@ -76,29 +99,6 @@
 				}
 			} else {
 				print('<em class="neevidovano">(není uvedeno)</em>');
-			}
-			?>
-		</h2>
-	</div>
-	<div>
-		<h1>Materiál</h1>
-		<h2>
-			<?php
-			if (strlen($objekt->material) > 2) {
-				printf($objekt->material);
-			} else {
-				printf('<em class="neevidovano">(není uveden)</em>');
-			}
-			?>
-		</h2>
-		<div class="space"></div>
-		<h1>Památková ochrana</h1>
-		<h2>
-			<?php
-			if (strlen($objekt->pamatkova_ochrana) > 2) {
-				printf('<a href="http://monumnet.npu.cz/pamfond/list.php?CiRejst=' . $objekt->pamatkova_ochrana . '">' . $objekt->pamatkova_ochrana . '</a>');
-			} else {
-				printf("ne");
 			}
 			?>
 		</h2>

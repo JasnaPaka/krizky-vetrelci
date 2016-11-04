@@ -176,28 +176,41 @@
 			</div>
 		<?php } ?>
                  
-                <?php if (sizeof($pois) > 0) { ?>
-		
-                 <div id="body">
-                    <hr />
-                    <h3>Související místa</h3>
-                    
-                    <p><ul>
-                        <?php 
-                        foreach ($pois as $poi) {
-                            print ("<li>");
-                            printf ('<a href="https://maps.google.cz/maps?q=%s,%s">%s</a>', $poi->latitude, $poi->longitude, $poi->nazev);
-                            if (strlen($poi->popis) > 2) {
-                                print (' &ndash; '.$poi->popis);
-                            }
-                            print ("</li>");
-                        }
-                        ?>
-                    </ul></p>
-                 </div>
-                
-                <?php } ?>
-		 
+		<?php if (sizeof($pois) > 0) { ?>
+
+		 <div id="body">
+			<hr />
+			<h3>Související místa</h3>
+
+			<p><ul>
+				<?php
+				foreach ($pois as $poi) {
+					print ("<li>");
+					printf ('<a href="https://maps.google.cz/maps?q=%s,%s">%s</a>', $poi->latitude, $poi->longitude, $poi->nazev);
+					if (strlen($poi->popis) > 2) {
+						print (' &ndash; '.$poi->popis);
+					}
+					print ("</li>");
+				}
+				?>
+			</ul></p>
+		 </div>
+
+		<?php } ?>
+
+		<?php if (strlen($objekt->pamatkova_ochrana) > 2) { ?>
+
+			<div id="evidence">
+				<hr />
+				<h3>Památková ochrana</h3>
+
+				<p>
+					<?php printf('<a href="http://monumnet.npu.cz/pamfond/list.php?CiRejst=' . $objekt->pamatkova_ochrana . '">' . $objekt->pamatkova_ochrana . '</a>'); ?>
+				</p>
+			</div>
+
+		<?php } ?>
+
 		 <?php if (count($zdroje) > 0) { ?>
 		 
 		 <div id="zdroje">
