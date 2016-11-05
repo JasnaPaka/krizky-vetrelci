@@ -168,7 +168,7 @@
 						if (!$prvni) {
 							print (", ");
 						}
-						printf ('<a href="/soubor/%d/">%s</a>', $collection->id, $collection->nazev);
+						printf ('<a href="/katalog/soubor/%d/">%s</a>', $collection->id, $collection->nazev);
 						$prvni = false;
 					}
 				?>
