@@ -783,6 +783,7 @@ a:hover.strankovani-polozka {
 #stahnout-gpx {
     line-height: 1.3;
     margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 #stahnout-gpx td, #stahnout-gpx th  {
