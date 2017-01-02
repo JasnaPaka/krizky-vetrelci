@@ -817,31 +817,6 @@ a:hover.strankovani-polozka {
     border-radius: 8px;
 }
 
-#partners .partner-big {
-    max-height: 40px;
-    margin: 0 8px 30px 8px;
-}
-
-#partners .partner-small {
-    max-height: 30px;
-    margin: 0 8px 10px 8px;
-}
-
-#footer-provider {
-    padding-bottom: 30px;
-    text-transform: none;
-}
-
-#footer-provider img {
-    margin-left: 10px;
-    top: 10px;
-}
-
-#footer-content {
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-
 #vyzva {
     margin-top: 20px;
 }
