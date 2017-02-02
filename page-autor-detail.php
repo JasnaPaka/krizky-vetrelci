@@ -35,21 +35,27 @@
 
 	<div class="topMenu">
             <div>
-                <h1>Narozen(a)</h1>
+                <h1>Narození</h1>
                 <h2>
                     <?php if ($autor->datum_narozeni == null) {
                             printf('<em class="neevidovano">(neuvedeno)</em>');
                     } else {
-                            echo date("j. n. Y", strtotime($autor->datum_narozeni));	
+                            print date("j. n. Y", strtotime($autor->datum_narozeni));
+                            if (strlen ($autor->misto_narozeni) > 1) {
+                                printf (', %s', $autor->misto_narozeni);
+                            }
                     } ?>
                 </h2>
             </div>
             <?php if ($autor->datum_umrti != null) { ?>
                 <div>
-                    <h1>Zemřel(a)</h1>
+                    <h1>Úmrtí</h1>
                     <h2>
                             <?php
-                                    echo date("j. n. Y", strtotime($autor->datum_umrti));	
+                                    print date("j. n. Y", strtotime($autor->datum_umrti));
+                                if (strlen ($autor->misto_umrti) > 1) {
+                                    printf (', %s', $autor->misto_umrti);
+                                }
                             ?>
                     </h2>
                 </div>
