@@ -54,7 +54,14 @@
 		<div class="buttonsGreen">		
 			<?php if (is_user_logged_in() && current_user_can('edit_posts')) { ?>
 				<a class="buttonGreen" href="/wp-admin/admin.php?page=object&action=view&id=<?php printf($objekt->id) ?>">UPRAVIT</a>
-	        <?php } else { ?>
+                <?php
+                    if (!$objekt->potreba_foto) {
+                        printf ('<a class="buttonGreen" href="/wp-admin/admin.php?page=object&action=newphoto&id=%s">POTŘEBA PŘEFOTIT</a>', $objekt->id);
+                    } else {
+						printf ('<a class="buttonGreen" href="/wp-admin/admin.php?page=object&action=nonewphoto&id=%s">JIŽ NENÍ POTŘEBA PŘEFOTIT</a>', $objekt->id);
+					}
+                ?>
+            <?php } else { ?>
 	        	<a class="buttonGreen" href='mailto:krizkyavetrelci@email.cz?subject=<?php printf(addslashes($objekt->nazev)) ?> (<?php print($objekt->id); ?>): Doplnění informací'>DOPLNIT INFORMACE</a>
 	        <?php } ?>
 	     </div>

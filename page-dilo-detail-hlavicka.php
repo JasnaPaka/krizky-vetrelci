@@ -51,7 +51,7 @@
 		</h2>
 	</div>
 	<div>
-		<h1>Rok</h1>
+        <h1>Rok</h1>
 		<h2>
 			<?php
 			if (strlen($objekt->rok_realizace) > 2 && strlen($objekt->rok_vzniku)) {
@@ -63,6 +63,11 @@
 			} else {
 				print('<em class="neevidovano">(není uveden)</em>');
 			}
+
+			// datum zániku
+            if (strlen($objekt->rok_zaniku) > 2) {
+                printf (' (†%s)', $objekt->rok_zaniku);
+            }
 			?>
 		</h2>
 		<div class="space"></div>
