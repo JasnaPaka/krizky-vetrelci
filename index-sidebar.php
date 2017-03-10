@@ -1,3 +1,7 @@
+<h2><?php print($KV["hledame"]) ?></h2>
+
+<p id="hledame"><?php print stripslashes($KV_SETTINGS["hledame"]) ?></p><br />
+
 <h2><?php print($KV["nahodne_dilo"]) ?></h2>
 
 <?php

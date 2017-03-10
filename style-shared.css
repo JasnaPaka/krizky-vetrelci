@@ -206,7 +206,7 @@
 }
 
 /* titulka */
-#o-projektu, #titulka-mapa {
+#o-projektu, #titulka-mapa, #hledame {
     /*	margin: 0 330px 0 0;  */
     line-height: 1.3;
     font-size: 1em;

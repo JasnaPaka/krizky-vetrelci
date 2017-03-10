@@ -22,7 +22,7 @@ function getObjectPluralStr($count) {
 }
 
 function getCountRandomObjects() {
-    return 3;
+    return 2;
 }
 
 // řetězce
@@ -46,6 +46,7 @@ $KV["dilo_nenalezeno"] = "Nebylo nalezeno žádné dílo.";
 $KV["pocet_del_se_stitkem"] = "Počet děl se štítkem";
 $KV["zobrazeni_informaci"] = "Zobrazení informací o díle";
 $KV["zadne_dilo"] = "V katalogu není žádné dílo.";
+$KV["hledame"] = "Zapojte se";
 
 
 include "functions-strings.php";
