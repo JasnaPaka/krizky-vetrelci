@@ -173,8 +173,13 @@
 	</a>
 	
 	<div class="padding">
-		<h3><a href="/katalog/dilo/<?php echo $objekt->id ?>/" title="Zobrazení informací o díle"><?php echo $objekt->nazev ?></a></h3>
-	</div>
+		<h3>
+            <a href="/katalog/dilo/<?php echo $objekt->id ?>/" title="Zobrazení informací o díle"><?php echo $objekt->nazev ?></a>
+			<?php if ($objekt->zruseno) { ?>
+                <span class="katalog-dilo-zruseno">Odstraněno</span>
+			<?php } ?>
+        </h3>
+    </div>
 </div>
 
 <?php

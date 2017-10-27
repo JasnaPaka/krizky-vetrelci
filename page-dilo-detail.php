@@ -68,7 +68,7 @@
 	     
 	 	<?php if ($objekt->zruseno) { ?>
 	 		<div id="objekt-zrusen">
-	 			Dílo se na místě již nenachází. Bylo v minulosti odstraněno nebo zničeno.
+                Dílo bylo odstraněno, zakryto, zničeno nebo zmizelo neznámo kam.
 	 		</div>
 	 	<?php } ?>
 	     
@@ -217,6 +217,12 @@
 			</div>
 
 		<?php } ?>
+
+		<?php
+		if (strlen($objekt->prezdivka) > 2) {
+			printf("<div id=\"prezdivky\"><hr /><h3>Přezdívky díla</h3><p>%s</p></div>",$objekt->prezdivka);
+		}
+		?>
 
 		 <?php if (count($zdroje) > 0) { ?>
 		 

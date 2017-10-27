@@ -4,16 +4,16 @@
 		<h2><?php printf('<a href="/katalog/kategorie/%s/" title="Přehled všech děl v kategorii">%s</a>',
 				$kategorie->id, $kategorie->nazev); ?></h2>
 		<div class="space"></div>
-		<h1>Přezdívka</h1>
-		<h2>
+        <h1>Materiál</h1>
+        <h2>
 			<?php
-			if (strlen($objekt->prezdivka) > 2) {
-				printf($objekt->prezdivka);
+			if (strlen($objekt->material) > 2) {
+				printf($objekt->material);
 			} else {
-				printf('<em class="neevidovano">(není uvedena)</em>');
+				printf('<em class="neevidovano">(není uveden)</em>');
 			}
 			?>
-		</h2>
+        </h2>
 	</div>
 	<div>
 		<h1>Autor</h1>
@@ -39,16 +39,12 @@
 			?>
 		</h2>
 		<div class="space"></div>
-		<h1>Materiál</h1>
-		<h2>
+        <h1>GPS souřadnice</h1>
+        <h2>
 			<?php
-			if (strlen($objekt->material) > 2) {
-				printf($objekt->material);
-			} else {
-				printf('<em class="neevidovano">(není uveden)</em>');
-			}
+			printf("%f, %f", $objekt->latitude, $objekt->longitude);
 			?>
-		</h2>
+        </h2>
 	</div>
 	<div>
         <h1>Rok</h1>

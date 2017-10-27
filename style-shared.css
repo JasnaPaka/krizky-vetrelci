@@ -171,11 +171,11 @@
     column-gap: 40px;
 }
 
-#zdroje, #evidence, #soubory, #body {
+#zdroje, #evidence, #soubory, #body, #prezdivky {
     margin: 0 0 20px 0;
 }
 
-#zdroje h3, #evidence h3, #soubory h3, #dila h3, #body h3 {
+#zdroje h3, #evidence h3, #soubory h3, #prezdivky h3, #dila h3, #body h3 {
     font-size: 20px;
     color: #85a92b;
     margin: 8px 0 12px 0;
@@ -184,6 +184,7 @@
 #zdroje hr,
 #evidence hr,
 #soubory hr,
+#prezdivky hr,
 #body hr {
     border-width: 1px 0px 0px;
     border-style: solid none none;
@@ -192,6 +193,7 @@
 
 #zdroje a,
 #evidence a,
+#prezdivky a,
 #soubory a,
 #body a {
     color: #000;
