@@ -77,15 +77,19 @@
 		     <div id="picture-box">
 		     	<?php if ($fotografiePrim == null || $fotografiePrim->img_512 == null) { ?>
 		     		<img src="<?php bloginfo('template_url') ?>-child-krizkyavetrelci/images/foto-neni-512.png" alt="Fotografie není dostupná" 
-		     			title="Fotografie není dostupná"  />		     	
+		     			title="Fotografie není dostupná"  />
 		     	<?php } else { 
 		     		$popis = $fotografiePrim->popis;
 					if (strlen(trim($fotografiePrim->autor)) > 1) {
 						$popis.= " Autor/zdroj: ".$fotografiePrim->autor;	
 					}
+
+					if (strlen($fotografiePrim->rok) > 0) {
+					    $popis.= ", rok: ".$fotografiePrim->rok;
+                    }
 					
 					if (!$fotografiePrim->soukroma)  {
-						$popis.= ", licence: CC-BY-SA"; 	
+						$popis.= ", licence: CC-BY-SA";
 					}
 					
 					$popis = trim ($popis);
@@ -117,7 +121,7 @@
 							}
 							
 							if (!$photo->soukroma)  {
-								$popis.= " Licence: CC-BY-SA"; 	
+								$popis.= ", licence: CC-BY-SA";
 							}
 							
 							$popis = trim ($popis);
