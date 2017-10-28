@@ -153,7 +153,7 @@
     line-height: 1.2;
 }
 
-#obsah p, #zdroje p, #soubory p, #evidence p, .pridat-dilo p {
+#obsah p, #zdroje p, #soubory p, #evidence p, .pridat-dilo p, #about-description {
     margin: 8px 0 8px 0;
     font-size: 15px;
     line-height: 1.3;
