@@ -119,6 +119,10 @@
 							if (strlen(trim($photo->autor)) > 1) {
 								$popis.= " Autor/zdroj: ".$photo->autor;	
 							}
+
+							if (strlen($photo->rok) > 0) {
+								$popis.= ", rok: ".$photo->rok;
+							}
 							
 							if (!$photo->soukroma)  {
 								$popis.= ", licence: CC-BY-SA";
