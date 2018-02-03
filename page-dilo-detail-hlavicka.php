@@ -50,7 +50,8 @@
         <h1>Rok</h1>
 		<h2>
 			<?php
-			if (strlen($objekt->rok_realizace) > 2 && strlen($objekt->rok_vzniku)) {
+			if (strlen($objekt->rok_realizace) > 2 && strlen($objekt->rok_vzniku)
+                    && $objekt->rok_realizace != $objekt->rok_vzniku) {
 				printf("%s (realizace), %s (odhalení)", $objekt->rok_realizace, $objekt->rok_vzniku);
 			} else if (strlen($objekt->rok_realizace) > 2) {
 				print($objekt->rok_realizace);
