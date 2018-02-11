@@ -240,17 +240,20 @@
 		 	<p><ul>
 		 	<?php
 		 		foreach ($zdroje as $zdroj) {
-		 			printf("<li>"); 
-					
-		 			if (strlen($zdroj->url) > 0) {
+		 			printf("<li>");
+					if (strlen($zdroj->typ) > 0 && strlen($zdroj->nazev) < 2) {
+					    $sc = $oc->getSourceType($zdroj->typ);
+					    printf('<a href="%s">%s</a>', strlen($zdroj->url) > 2 ? $zdroj->url : sprintf($sc->getUrl(), $zdroj->identifikator),
+                            sprintf($sc->getDescription(), $objekt->nazev));
+					} else if (strlen($zdroj->url) > 0) {
 		 				print('<a href="'.$zdroj->url.'">'.$zdroj->nazev.'</a>');
 					} else {
-						printf($zdroj->nazev);	
+						printf($zdroj->nazev);
 					}
 					
-					if (strlen($zdroj->isbn) > 0) {
-						printf(' ISBN: '.$zdroj->isbn.'. Zjistit dostupnost v: <a 
-							href="http://aleph20.svkpl.cz/F/?func=find-d&find_code=ISN&request='.str_replace("-","",$zdroj->isbn).'">
+					if (strlen($zdroj->typ) > 0 && $oc->getIsKniha($zdroj->typ)) {
+						printf(' ISBN: '.$zdroj->identifikator.'. Zjistit dostupnost v: <a 
+							href="http://aleph20.svkpl.cz/F/?func=find-d&find_code=ISN&request='.str_replace("-","",$zdroj->identifikator).'">
 							Studijní a vědecká knihovna Plzeňskeho kraje</a>');
 					}
 					

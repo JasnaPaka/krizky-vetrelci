@@ -1,6 +1,7 @@
 <?php 
     get_header();
     $uploadDir = wp_upload_dir();
+    $ac = kv_autor_controller();
 
     $autor = kv_author_info();
     $objekty = kv_author_objects();
@@ -122,24 +123,26 @@
  	<h3>Literatura a prameny</h3>
  	<p><ul>
  	<?php
- 		foreach ($zdroje as $zdroj) {
- 			echo "<li>"; 
-			
- 			if (strlen($zdroj->url) > 0) {
- 				echo '<a href="'.$zdroj->url.'">'.$zdroj->nazev.'</a>';	
-			} else {
-				echo $zdroj->nazev;	
-			}
-			
-			if (strlen($zdroj->isbn) > 0) {
-				echo ' ISBN: '.$zdroj->isbn.'. Zjistit dostupnost v: <a 
-					href="http://aleph20.svkpl.cz/F/?func=find-d&find_code=ISN&request='.str_replace("-","",$zdroj->isbn).'">
-					Studijní a vědecká knihovna Plzeňskeho kraje</a>';
-			}
-			
-			echo "</li>";
-			//echo "<br />";
-		}
+        foreach ($zdroje as $zdroj) {
+            printf("<li>");
+            if (strlen($zdroj->typ) > 0 && strlen($zdroj->nazev) < 2) {
+                $sc = $ac->getSourceType($zdroj->typ);
+                printf('<a href="%s">%s</a>', strlen($zdroj->url) > 2 ? $zdroj->url : sprintf($sc->getUrl(), $zdroj->identifikator),
+                    sprintf($sc->getDescription(), trim($autor->jmeno." ".$autor->prijmeni)));
+            } else if (strlen($zdroj->url) > 0) {
+                print('<a href="'.$zdroj->url.'">'.$zdroj->nazev.'</a>');
+            } else {
+                printf($zdroj->nazev);
+            }
+
+            if (strlen($zdroj->typ) > 0 && $ac->getIsKniha($zdroj->typ)) {
+                printf(' ISBN: '.$zdroj->identifikator.'. Zjistit dostupnost v: <a 
+                                href="http://aleph20.svkpl.cz/F/?func=find-d&find_code=ISN&request='.str_replace("-","",$zdroj->identifikator).'">
+                                Studijní a vědecká knihovna Plzeňskeho kraje</a>');
+            }
+
+            printf("</li>");
+        }
  	?>
  	</ul>
  	</p>
