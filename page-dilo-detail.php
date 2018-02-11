@@ -213,19 +213,6 @@
 
 		<?php } ?>
 
-		<?php if (strlen($objekt->pamatkova_ochrana) > 2) { ?>
-
-			<div id="evidence">
-				<hr />
-				<h3>Památková ochrana</h3>
-
-				<p>
-					<?php printf('<a href="http://monumnet.npu.cz/pamfond/list.php?CiRejst=' . $objekt->pamatkova_ochrana . '">' . $objekt->pamatkova_ochrana . '</a>'); ?>
-				</p>
-			</div>
-
-		<?php } ?>
-
 		<?php
 		if (strlen($objekt->prezdivka) > 2) {
 			printf("<div id=\"prezdivky\"><hr /><h3>Přezdívky díla</h3><p>%s</p></div>",$objekt->prezdivka);
