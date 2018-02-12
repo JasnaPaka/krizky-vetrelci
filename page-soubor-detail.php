@@ -1,6 +1,9 @@
 <?php 
 	get_header();
 	$uploadDir = wp_upload_dir();
+    if (is_ssl()) {
+        $uploadDir = str_replace("http://", "https://", $uploadDir);
+    }
 	
 	$collection = kv_collection_info();
 	$objekty = kv_collection_objects();
