@@ -7,6 +7,7 @@
 	
 	$collection = kv_collection_info();
 	$objekty = kv_collection_objects();
+    $zdroje = kv_collection_sources();
 ?>
 
 <?php if (!isset($collection->id) || $collection->deleted) { ?>
@@ -56,9 +57,11 @@
 	 	</div>
 	 <?php } ?>
 	 
-	 </div>    
-	 
-<div id="dila"> 
+	 </div>
+
+<?php include "i-zdroje.php" ?>
+
+<div id="dila">
 <hr />
 <h3>Přehled děl</h3>
 	
