@@ -7,6 +7,8 @@
     }
 
     $oc = kv_object_controller();
+    $controller = $oc;
+
     $pois = $oc->getPoisForObject();
 
     $kategorie = $objekt->kategorie;

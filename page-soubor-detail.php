@@ -8,6 +8,9 @@
 	$collection = kv_collection_info();
 	$objekty = kv_collection_objects();
     $zdroje = kv_collection_sources();
+
+    $controller = kv_source_controller();
+
 ?>
 
 <?php if (!isset($collection->id) || $collection->deleted) { ?>

@@ -6,6 +6,7 @@
     }
 
     $ac = kv_autor_controller();
+    $controller = $ac;
 
     $autor = kv_author_info();
     $objekty = kv_author_objects();
