@@ -95,7 +95,7 @@
                     }
 					
 					if (!$fotografiePrim->soukroma)  {
-						$popis.= ", licence: CC-BY-SA";
+						$popis.= ", &copy; CC-BY-SA 4.0";
 					}
 					
 					$popis = trim ($popis);
@@ -131,7 +131,7 @@
 							}
 							
 							if (!$photo->soukroma)  {
-								$popis.= ", licence: CC-BY-SA";
+								$popis.= ", &copy; CC-BY-SA 4.0";
 							}
 							
 							$popis = trim ($popis);
