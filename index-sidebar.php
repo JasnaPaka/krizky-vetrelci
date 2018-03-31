@@ -1,6 +1,16 @@
-<h2><?php print($KV["hledame"]) ?></h2>
+<h2>Hledání</h2>
 
-<p id="hledame"><?php print stripslashes($KV_SETTINGS["hledame"]) ?></p><br />
+<form method="post" action="/katalog/">
+    <input name="typ" value="dilo" type="hidden">
+    <input id="s" name="s" placeholder="Název díla" type="text">
+    <input value="Hledat v dílech" type="submit">
+</form>
+
+<form method="post" action="/katalog/autori/">
+    <input name="typ" value="autor" type="hidden">
+    <input id="s" name="s" placeholder="Jméno autora" type="text">
+    <input value="Hledat v autorech" type="submit">
+</form><br /><br />
 
 <h2><?php print($KV["nahodne_dilo"]) ?></h2>
 
@@ -54,7 +64,7 @@
     }
 ?>
 
-<br /><br /><br /><br />
+<br /><br />
 <h2><?php print($KV["posledni_pridane"]) ?></h2>
 
 <?php
@@ -73,3 +83,9 @@
             }			
         }
 ?>
+
+<br /><br /><br />
+
+<h2><?php print($KV["hledame"]) ?></h2>
+
+<p id="hledame"><?php print stripslashes($KV_SETTINGS["hledame"]) ?></p><br />
