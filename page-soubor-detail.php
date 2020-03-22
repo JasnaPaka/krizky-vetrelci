@@ -106,11 +106,11 @@
 	}
 ?>	
 
-<div class="clear"></div>	    
-    
-<?php		
-} 
-?>    
+<div class="clear"></div>
+
+<?php }
+include "page-trvaly-odkaz.php";
+?>
    
    </div> 
    </div>

@@ -122,7 +122,11 @@
  </div>
 
 <?php include "i-zdroje.php" ?>
- 
+
+	<?php
+	include "page-trvaly-odkaz.php";
+	?>
+
 <div id="dila"> 
 <hr />
 <h3>Přehled děl</h3>
@@ -166,7 +170,7 @@
 
 <div class="clear"></div>	    
     
-<?php		
+<?php
 } 
 ?>    
    

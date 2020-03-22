@@ -257,7 +257,9 @@
 		 	</p>
 		 </div>
 		 
-		 <?php } ?>
+		 <?php }
+		    include "page-trvaly-odkaz.php";
+		 ?>
 	     
 	</div>
    </div>
