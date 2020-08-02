@@ -85,18 +85,9 @@
             <div class="separator"></div>
   
             <div id="socials">
-              <a id="social_rss" href="<?php printf('%s/feed', get_bloginfo('url')); ?>"></a><a id="social_fb" target="_blank" href="https://www.facebook.com/groups/krizkyavetrelci/"></a><a class="showpopup" id="newsletter" href="#"></a>
+              <a id="social_rss" href="<?php printf('%s/feed', get_bloginfo('url')); ?>"></a><a id="social_fb" target="_blank" href="https://www.facebook.com/groups/krizkyavetrelci/"></a>
 
-              <div id="newsletterpopup" class="menupopup">
-               <?php
-                  switch_to_blog(1);
-                   
-                  $widgetNL = new WYSIJA_NL_Widget(true);
-                  echo $widgetNL->widget(array('form' => 1, 'form_type' => 'php'));
-                 
-                  restore_current_blog();
-                ?>
-              </div> 
+              
 					
 			      </div>
             
