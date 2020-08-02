@@ -25,7 +25,7 @@
 					printf(", ");
 				}
 				printf('<a href="/katalog/autor/%s/" title="Informace o autorovi">%s</a>',
-					$autor->id, trim($autor->titul_pred . " " . $autor->jmeno . " " . $autor->prijmeni . " " . $autor->titul_za));
+					$autor->id, trim( $autor->jmeno . " " . $autor->prijmeni));
 				if (strlen($autor->spoluprace) > 2) {
 					printf(" (%s)", $autor->spoluprace);
 				}

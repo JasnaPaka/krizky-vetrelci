@@ -36,7 +36,7 @@
 
     <div class="padding">
 
-      <h2><?php echo trim($autor->titul_pred." ".$autor->jmeno." ".$autor->prijmeni." ".$autor->titul_za) ?></h2>         
+      <h2><?php echo trim($autor->jmeno." ".$autor->prijmeni) ?></h2>
 	</div>
 
 	<div class="topMenu">

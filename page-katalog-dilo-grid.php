@@ -10,7 +10,7 @@
                                 printf(", ");	
                         }
 
-                        printf('<a href="/katalog/autor/'.$autor->id.'/">'.trim($autor->titul_pred." ".$autor->jmeno." ".$autor->prijmeni." ".$autor->titul_za)."</a>");
+                        printf('<a href="/katalog/autor/'.$autor->id.'/">'.trim($autor->jmeno." ".$autor->prijmeni)."</a>");
 
                         $isFirst = false;
                 }

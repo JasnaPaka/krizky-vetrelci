@@ -79,7 +79,7 @@
 	
 	<div class="padding paddingaut">
 		<h3><a href="/katalog/autor/<?php printf($autor->id) ?>/" title="Zobrazení informací o autorovi">
-			<?php printf(trim($autor->titul_pred." ".$autor->jmeno." ".$autor->prijmeni." ".$autor->titul_za)) ?>
+			<?php printf(trim($autor->jmeno." ".$autor->prijmeni)) ?>
 		</a></h3>	
 	</div>
 </div>
