@@ -88,21 +88,6 @@
 			<a class="buttonGreen" href="/wp-admin/admin.php?page=author&action=view&id=<?php echo $autor->id ?>">UPRAVIT</a>
 		</div>
     <?php } ?>
-     
-    
-<?php if (count($objekty) == 0) { ?>
-
-<div id="dila"> 
-<hr />
-<h3>Přehled děl</h3>
-<p>Nebylo nalezeno žádné dílo.</p>
-</div>
-
-<?php 
-
-} else {
-	
-?>	
 
 <div id="obsah-container">
 		 
@@ -130,8 +115,13 @@
 <div id="dila"> 
 <hr />
 <h3>Přehled děl</h3>
-	
-<p id="pocet-del">Celkový počet děl: <?php echo $autor->pocet ?></p>
+
+    <?php if (count($objekty) == 0) { ?>
+        <p>Nebylo nalezeno žádné dílo.</p>
+
+    <?php } else { ?>
+
+        <p id="pocet-del">Celkový počet děl: <?php echo $autor->pocet ?></p>
 	
 <?php	
 	$objCount = 0;
