@@ -176,7 +176,7 @@
 			 	</div>
 			 <?php } ?>
 		 </div>
-        
+
 		<?php if (sizeof ($oc->getCollectionsForObject()) > 0) { ?>
 			<div id="soubory">
 				<hr />
@@ -245,7 +245,7 @@
 					
 					if (strlen($zdroj->typ) > 0 && $oc->getIsKniha($zdroj->typ)) {
 						printf(' ISBN: '.$zdroj->identifikator.'. Zjistit dostupnost v: <a 
-							href="http://aleph20.svkpl.cz/F/?func=find-d&find_code=ISN&request='.str_replace("-","",$zdroj->identifikator).'">
+							href="http://aleph.svkpk.cz/F/?func=find-d&find_code=ISN&request='.str_replace("-","",$zdroj->identifikator).'">
 							Studijní a vědecká knihovna Plzeňskeho kraje</a>');
 					}
 					
