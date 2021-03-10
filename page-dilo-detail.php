@@ -135,8 +135,7 @@
 							}
 							
 							$popis = trim ($popis);
-							
-				?>							
+                            ?>
 		     		<a href="<?php printf($uploadDir['baseurl'].$photo->img_large); ?>" alt="Pro zvětšení klepněte"
 		     			data-lightbox-gallery="lightbox[gallery-<?php printf($objekt->id) ?>]" title="<?php printf($popis) ?>" 
 		     			rel="lightbox[gallery-<?php printf($objekt->id) ?>]" class="photo-preview">
@@ -177,7 +176,7 @@
 			 	</div>
 			 <?php } ?>
 		 </div>
-
+        
 		<?php if (sizeof ($oc->getCollectionsForObject()) > 0) { ?>
 			<div id="soubory">
 				<hr />
@@ -225,7 +224,7 @@
 		}
 		?>
 
-		 <?php if (count($zdroje) > 0) { ?>
+		 <?php if (isset($zdroje) && count($zdroje) > 0) { ?>
 		 
 		 <div id="zdroje">
 			<hr />
