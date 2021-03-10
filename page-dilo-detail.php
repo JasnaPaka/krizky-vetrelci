@@ -233,7 +233,8 @@
 		 	<?php
 		 		foreach ($zdroje as $zdroj) {
 		 			printf("<li>");
-					if (strlen($zdroj->typ) > 0 && strlen($zdroj->nazev) < 2) {
+
+                    if (strlen($zdroj->typ) > 0 && strlen($zdroj->nazev) < 2) {
 					    $sc = $oc->getSourceType($zdroj->typ);
 					    printf('<a href="%s">%s</a>', strlen($zdroj->url) > 2 ? $zdroj->url : sprintf($sc->getUrl(), $zdroj->identifikator),
                             sprintf($sc->getDescription(), $objekt->nazev));
